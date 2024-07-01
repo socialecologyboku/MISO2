@@ -1,0 +1,253 @@
+*.py
+!MISO2*.py
+!test*.py
+
+.idea
+*.spydata
+*.DS_Store
+*.log
+/.spyproject
+*.p
+
+/tests/unit/analysis/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# poetry
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#poetry.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+#.idea/
+MatStocks_ODYM_setup/input_files/store.pckl
+*.pckl
+*.pyc
+*.pickle
+
+/tests/test_data/*.json
+/tests/test_data/*.parquet
+
+# temp files
+~$*
+*.bkp
+*.dtmp
+
+
+### R ###
+
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+.RDataTmp
+
+# User-specific files
+.Ruserdata
+
+# Example code in package build process
+*-Ex.R
+
+# Output files from R CMD build
+/*.tar.gz
+
+# Output files from R CMD check
+/*.Rcheck/
+
+# RStudio files
+.Rproj.user/
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
+
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
+
+# knitr and R markdown default cache directories
+*_cache/
+/cache/
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+# R Environment Variables
+.Renviron
+
+# pkgdown site
+docs/
+
+# translation temp files
+po/*~
+
+# RStudio Connect folder
+rsconnect/
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_exiobase_cohorts-0.csv
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_exiobase_enduse.xlsx
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_exiobase_outputs.xlsx
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_pyhsical_cohorts-0.csv
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_pyhsical_enduse.xlsx
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_pyhsical_outputs.xlsx
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_pyhsical_series.xlsx
+workflows/python/miso_database_Austria_exiobase/Austria_cohorts.parquet
+workflows/python/miso_database_Austria_physical/Austria_cohorts.parquet
+workflows/python/MISO2_save_config_Austria_shipments.py
+workflows/python/MISO2_save_config_Austria_exiobase.py
+workflows/python/MISO2_run_from_pickle_Austria.py
+model_input_data/Austria.zip
+workflows/python/miso_database_Austria_v3_1/Austria_cohorts.parquet
+workflows/python/miso_database_Austria_v3_2/Austria_cohorts.parquet
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_1_physical_enduse.csv
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_1_physical_outputs.csv
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_1_physical_series.csv
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_2_enduse.csv
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_2_outputs.csv
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_2_series.csv
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_2_1_enduse.csv
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_2_1_outputs.csv
+workflows/python/model_output_data/Friedrich2023_Austria/Austria_v3_2_1_series.csv

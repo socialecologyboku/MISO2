@@ -1,0 +1,6 @@
+
+*.spydata
+*.DS_Store
+*.log
+*.md
+*.txt

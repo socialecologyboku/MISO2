@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "MISO2"
+authors = [
+    {name = "Jan Streeck", email = "jan.streeck@boku.ac.at"},
+    {name = "Benedikt Grammer", email = "benedikt.grammer@boku.ac.at"},
+    {name = "Hanspeter Wieland", email = "hanspeter.wieland@boku.ac.at"},
+    {name = "Barbara Plank", email = "barbara.plank@boku.ac.at"},
+    {name = "Andre Baumgart", email = "andre.baumgart@boku.ac.at"},
+    {name = "Dominik Wiedenhofer", email = "dominik.wiedenhofer@boku.ac.at"}
+]
+description = "Material Stock-Flow modelling package"
+version = "1.0.0"
+dependencies = [
+    "requests",
+    'importlib-metadata; python_version<"3.8"',
+]

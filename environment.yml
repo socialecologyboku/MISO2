@@ -1,0 +1,21 @@
+name: miso2_env
+channels:
+  - defaults
+dependencies:
+  - python=3.8.11
+  - pandas
+  - scipy
+  - numpy
+  - xlrd
+  - xlwt
+  - openpyxl
+  - pypandoc
+  - matplotlib
+  - opt_einsum
+  - numexpr
+  - pyarrow
+  - multiprocess
+  - spyder
+  - dask
+  - numba
+  - notebook
