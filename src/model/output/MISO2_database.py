@@ -447,13 +447,14 @@ class MISO2Database:
         """
 
         if df_type is None:
-            indices = dict.fromkeys(self._values, dict())
+            indices = {result_type: {} for result_type in self._values}
             for result_type, dataframe in self._values.items():
                 if isinstance(dataframe, pd.DataFrame):
                     for name, levels in zip(dataframe.index.names, dataframe.index.levels):
                         indices[result_type][name] = list(levels)
                     years = np.array(dataframe.columns.values, dtype=int)
                     indices[result_type]["time"] = [np.min(years), np.max(years)]
+
         else:
             indices = {}
             dataframe = self._values[df_type]
