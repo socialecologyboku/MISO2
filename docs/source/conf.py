@@ -9,11 +9,17 @@
 import os
 import sys
 import sphinx_rtd_theme
-# error?
+from pathlib import Path
 
-sys.path.insert(0, os.path.abspath('../'))
-sys.path.insert(0, os.path.join(os.getcwd(), "../../src/"))
-sys.path.insert(0, os.path.join(os.getcwd(), '../../src/odym/modules'))
+main_path = Path(__file__).parents[2]
+sys.path.insert(0, os.path.join(main_path, "src"))
+sys.path.insert(0, os.path.join(main_path, "src/odym/modules"))
+
+#sys.path.insert(0, os.path.abspath('..'))
+#sys.path.insert(0, os.path.abspath('../..'))
+
+
+print(sys.path)
 
 project = 'MISO2'
 copyright = '2024, Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre Baumgart, Dominik Wiedenhofer'
@@ -23,7 +29,7 @@ author = 'Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    'sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'nbsphinx'
+    'sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'nbsphinx', 'sphinx_rtd_theme'
 ]
 
 templates_path = ['_templates']
@@ -39,3 +45,9 @@ nbsphinx_execute = 'never'
 html_theme = "sphinx_rtd_theme"
 
 html_static_path = ['_static']
+
+try:
+    import config.MISO2_config
+    print("Succesfully imported MISO2_config")
+except ImportError as e:
+    print(f"Error importing module: {e}")

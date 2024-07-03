@@ -1,1 +1,0 @@
-MISO2 Logger============.. automodule:: MISO2_logger    :members:

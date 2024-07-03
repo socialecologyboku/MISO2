@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 
-src Logging routines
+MISO2 Logging routines
 
 @author: bgrammer
 """
@@ -14,9 +14,9 @@ import logging
 def get_MISO2_logger(log_filename, log_pathname, file_level=None,
                      console_level=None, reset_handlers=True):
     """
-    Configure the src logger.
+    Configure the MISO2 logger.
 
-    Convenience function for configuring the src loggers.
+    Convenience function for configuring the MISO2 loggers.
 
     Args:
         log_filename(str): Name of the log file.

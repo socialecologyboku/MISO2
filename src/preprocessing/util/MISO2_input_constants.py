@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-
 Collection of constants related to ODYM/src input files.
 
 Created on Sat Mar  4 14:35:03 2023

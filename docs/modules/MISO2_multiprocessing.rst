@@ -1,1 +1,0 @@
-MISO2 Multiprocessing=====================.. automodule:: MISO2_multiprocessing	:members:
