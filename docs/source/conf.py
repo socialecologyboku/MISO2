@@ -46,6 +46,16 @@ html_theme = "sphinx_rtd_theme"
 
 html_static_path = ['_static']
 
+html_context = {
+    "display_github": True, # Integrate GitHub
+ #   "github_user": "MyUserName", # Username
+ #   "github_repo": "MyDoc", # Repo name
+ #   "github_version": "master", # Version
+ #   "conf_py_path": "/source/", # Path in the checkout to the docs root
+}
+
+master_doc = "sidebar_toc"
+
 try:
     import config.MISO2_config
     print("Succesfully imported MISO2_config")
