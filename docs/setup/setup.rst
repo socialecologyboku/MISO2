@@ -1,5 +1,0 @@
-Setup
-=====
-
-.. toctree::
-   installation

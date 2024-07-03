@@ -1,5 +1,5 @@
 Welcome to the documentation of the MISO2 model
-=================================
+================================================
 
 .. toctree::
    :maxdepth: 2
