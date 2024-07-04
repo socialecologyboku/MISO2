@@ -5,7 +5,7 @@ Created on Mon Feb 14 11:57:35 2022
 
 MISO2 System definitions.
 
-@author: JS, BP, BG
+@author: bgrammer
 """
 import logging as logger
 import numpy as np
@@ -28,9 +28,9 @@ def define_MFA_System_MISO2v7(MISO2, PrL_Number, PrL_Name, dimensions):
         dimensions(dict): Dictionary with Nr,Ne,Nm,Nt and Ng dimensions as integers.
 
     Returns:
-        MFA_system_control(dict): MFA system control parameters used for error checking and metadata creation. \
-            Entries are "system_definition", number_stocks", "number_flows", "stock_names, "flow_names",
-            "all_zero_ok", "no_data_yet" and "must_be_zero".
+        MFA_system_control(dict): MFA system control parameters used for error checking and metadata creation. Entries
+         are "system_definition", number_stocks", "number_flows", "stock_names, "flow_names", "all_zero_ok",
+         "no_data_yet" and "must_be_zero".
     """
 
     logger.info("Creating MISO system definition")

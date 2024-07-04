@@ -7,7 +7,17 @@ import operator
 
 
 class MISO2SensitivityByParameter:
+    """
+    Initializes the MISO2SensitivityByParameter class with the given sensitivity settings and coefficient of variation factor.
+    This class is injected into a MISO2 config similar to the Monte Carlo object to randomise a dataset. It has the
+    same interface (via duck-typing).
+
+    Args:
+        sensitivity_settings (pandas.DataFrame): DataFrame containing sensitivity settings.
+        cv_factor (float): Coefficient of variation factor, default is 1.0.
+    """
     def __init__(self, sensitivity_settings, cv_factor=1.0):
+
         self.sensitivity_settings = sensitivity_settings
 
         self.uncert_options = {}
@@ -19,17 +29,28 @@ class MISO2SensitivityByParameter:
         self.cv_factor = cv_factor
 
     def available_parameter_groups(self):
+        """
+        Returns the available parameter groups.
+
+        Returns:
+            dict_keys: Keys of the uncertainty options dictionary.
+        """
+
         return self.uncert_options.keys()
 
     def update_parameter_randomization(self, new_parameter, new_scenario):
         """
-
-        Set next parameter group to test. The Monte Carlo object will return a modified config of the specified type.
+        Sets the next parameter group to test. The Monte Carlo object will return a modified config of the specified
+        type.
 
         Args:
-             new_parameter(str): Name of parameter group to test next.
-             new_scenario(str): One of "Low_scenario" or "High_scenario".
+            new_parameter (str): Name of the parameter group to test next.
+            new_scenario (str): One of "Low_scenario" or "High_scenario".
+
+        Raises:
+            ValueError: If `new_scenario` is not one of the allowed scenarios.
         """
+
         self.active_randomization = new_parameter
         allowed_scenarios = ["Low_scenario", "High_scenario"]
         if new_scenario not in allowed_scenarios:
@@ -39,11 +60,28 @@ class MISO2SensitivityByParameter:
 
     def get_bias(self, mode):
         """
-        Return bias of next sample handed out by config.
+        Returns the bias of the next sample handed out by config.
+
+        Args:
+            mode (str): Mode for bias retrieval. Not used.
+
+        Returns:
+            str: Returns "sensitivity_by_parameter"
         """
         return "sensitivity_by_parameter"
 
     def randomize_model_input(self, parameter_dict, uncertainty_settings, sample_size):
+        """
+        Randomizes model input parameters based on the active randomization settings.
+
+        Args:
+            parameter_dict (dict): Dictionary of parameters to be randomized.
+            uncertainty_settings (dict): Dictionary containing uncertainty settings.
+            sample_size (int): Not used, but part of interface for other monte carlo methods.
+
+        Returns:
+            dict: A new parameter dictionary with randomized values.
+        """
         active_options = self.uncert_options[self.active_randomization]
         # logger.info
         new_parameter_dict = {}
@@ -72,6 +110,12 @@ class MISO2SensitivityByParameter:
         return new_parameter_dict
 
     def get_parameter_randomization(self):
+        """
+        Checks if parameter randomization is enabled.
+
+        Returns:
+            bool: Always returns True indicating parameter randomization is enabled.
+        """
         return True
 
     def transform_uncert_array(self, parameter_dict, uncertainty_settings):
@@ -102,6 +146,24 @@ class MISO2SensitivityByParameter:
 
 def modify_parameter(parameter_name, parameter_group, test_options, parameter_values,
                      parameter_cvs, scenario, uncertainty_settings, cv_factor):
+
+    """
+    Modifies parameter values based on the provided settings. Either the parameters are adjusted by global cv,
+    by cv per value, or not at all if no cv is present.
+
+    Args:
+        parameter_name (str): Name of the parameter to modify.
+        parameter_group (str): Group of the parameter.
+        test_options (dict): Test options for the parameter.
+        parameter_values (np.ndarray): Array of parameter values.
+        parameter_cvs (np.ndarray): Coefficient of variation values.
+        scenario (str): Scenario to apply ("Low_scenario" or "High_scenario").
+        uncertainty_settings (dict): Dictionary with uncertainty settings.
+        cv_factor (float): Coefficient of variation factor.
+
+    Returns:
+        np.ndarray: Modified parameter values.
+    """
     logger.info(f"Modifying parameter name: {parameter_name}, parameter group: {parameter_group}")
     ops = {"+": operator.add, "-": operator.sub}
 

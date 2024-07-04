@@ -247,12 +247,16 @@ class MISO2SurvivalFunctions:
 
 def split_survival_functions(miso_survival_functions, index):
     """
-    Returns a new MISOSurvivalFunctions object with a view of subset SF array
+    Returns a new MISOSurvivalFunctions object with a view of subset SF array.
 
     Since SF_Array should never be modified in-place, it is okay to return a view here.
+
     Args:
         miso_survival_functions(MISOSurvivalFunctions): Original object.
-        index(int): Index to be subset
+        index(int): Index to be subset, first dimension of sf array (region).
+
+    Returns:
+        split_sf(MISOSurvivalFunctions): New object split at index dimension.
     """
     logger.info(f"Splitting surival functions index: {index}")
     split_sf = MISO2SurvivalFunctions()
