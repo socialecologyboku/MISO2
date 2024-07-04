@@ -11,3 +11,4 @@ multiprocess>=0.70.14
 matplotlib>=3.7.0
 dill>=0.3.6
 setuptools>=65.6.3
+pyarrow>=11.0.0

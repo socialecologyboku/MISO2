@@ -1,1 +1,1 @@
-MISO2 Model===========.. automodule:: model.core.MISO2_model    :members:
+.. _MISO2 Model:MISO2 Model===========.. automodule:: model.core.MISO2_model    :members:

@@ -3,7 +3,7 @@
 """
 Created on Mon Feb 14 11:57:35 2022
 
-src System definitions.
+MISO2 System definitions.
 
 @author: JS, BP, BG
 """

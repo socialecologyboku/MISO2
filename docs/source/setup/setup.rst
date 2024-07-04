@@ -1,11 +1,10 @@
 Setup
 =====
 
-It is possible to run the MISO2 code on any combination of IDE and Python environment you prefer. Below we provide
-instructions on how to run the code using Conda and Spyder.
-
-Requirements
-~~~~~~~~~~~~
+It is possible to run the MISO2 code on any combination of IDE and Python environment you prefer. You will need to install
+the packages required by MISO2 as well as the MISO2 package itself. Below we provide instructions on how to run the
+code using Conda and Spyder. You can also omit the steps involving Conda and directly install the MISO2 package, which
+will only install the minimum dependencies required by MISO2.
 
 1. Clone the repository or download the MISO2 code
 ----------------------------------------------------------
@@ -16,10 +15,11 @@ Download the MISO2 code or create a local clone of the Github repository, for ex
 2. Create a conda environment
 -----------------------------
 
-Install either Anaconda Navigator, Conda or Miniconda. Two files in the root of the repository are of interest:
+Install either Anaconda Navigator, Conda or Miniconda. Three files in the root of the repository are of interest:
 
 * **environment.yml** – Provides all relevant package names. You can use conda to create an environment for you from this file.
 * **Readme.md** – Contains the minimum version numbers of the packages used during MISO2 development. Refer to this if you have compatibility issues.
+* **requirements.txt** – Contains the dependencies required by the MISO2 model. If you install the conda environment, these requirements are already fulfilled.
 
 The most simple way to setup an environment is from within the Anaconda Navigator in the “Environments” tab.
 Navigate to the “environments.yml” and create the environment from the file. Activate it by clicking on the arrow next to it.

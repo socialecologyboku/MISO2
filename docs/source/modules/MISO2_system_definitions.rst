@@ -1,1 +1,1 @@
-MISO2 System definitions========================.. automodule:: model.config.MISO2_system_definitions    :members:
+.. _MISO2 system definitions:MISO2 System definitions========================.. automodule:: model.config.MISO2_system_definitions    :members:

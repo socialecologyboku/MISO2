@@ -39,22 +39,18 @@ nbsphinx_allow_errors = True
 
 nbsphinx_execute = 'never'
 
-# -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-#html_theme_path = [sphinx_rtd_theme.get_html_theme_path('stanford-theme')]
 html_theme = "sphinx_rtd_theme"
 
 html_static_path = ['_static']
 
 html_context = {
-    "display_github": True, # Integrate GitHub
- #   "github_user": "MyUserName", # Username
- #   "github_repo": "MyDoc", # Repo name
- #   "github_version": "master", # Version
+    "display_github": True,
+    "github_repo": "MISO2",
+    "github_version": "master",
  #   "conf_py_path": "/source/", # Path in the checkout to the docs root
 }
 
-master_doc = "sidebar_toc"
+master_doc = "index"
 
 try:
     import config.MISO2_config
