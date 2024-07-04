@@ -15,7 +15,7 @@ def check_value_difference(df1, df2, column_name, parameter_name):
     """
     Checks differences in values between a shared column of two dataframes.
     """
-    # names of this function need to be generalized
+
     df1_values = set(df1[column_name])
     df2_values = set(df2[column_name])
 

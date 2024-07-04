@@ -1,1 +1,1 @@
-MISO2 Config============.. automodule:: model.config.MISO2_config    :members:    :private-members:
+MISO2 Config============.. automodule:: model.config.MISO2_config    :members:

@@ -41,12 +41,6 @@ def check_mutually_exclusive_arrays(values, mode="normal"):
         absolutes = values["absolute"][:, :, absolute_indices, :]
         rates = values["rate"][:, :, rate_indices, :]
         any_rates_set = np.any(rates, axis=2)
-        # all_rates_set = np.all(rates, axis=2)
-        # rates_not_set = ~np.any(rates, axis=2)
-
-        # if not np.logical_or(all_rates_set, rates_not_set).all():
-        #    raise AttributeError("For rates, found that it contained an entry where either not all of rates"
-        #                         f" ({materials_to_check}) were set or empty)")
         any_absolutes_set = np.any(absolutes, axis=2)
 
         if np.logical_and(any_absolutes_set, any_rates_set).any():
@@ -227,9 +221,14 @@ def check_buffer_year(parameter_dict):
     Check that last year of input data is an all-zero buffer year.
 
     To correctly calculate mass-balances, we need to have a buffer year at the end of our input time series.
-
-    This is usually achieved by simply setting the model runtime in ODYM's master classification to \
+    This is usually achieved by simply setting the model runtime in ODYM's master classification to
         include an additional year.
+
+    Args:
+        parameter_dict(dict): Dictionary of ODYM parameters
+
+    Raises:
+        ValueError: If no buffer year is provided.
     """
 
     for param_name, param in parameter_dict.items():

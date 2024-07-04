@@ -63,8 +63,10 @@ class MISO2FileManager:
     def load_parameters(self, parameters=None, sheet_name=InputConstants.VALUES_SHEET_NAME):
         """
         Returns a dictionary of parameter values.
+
         Args:
             parameters(list): List of parameters to read. If None (default), all will be read.
+            sheet_name(string): Name of sheet to process.
         Returns:
              parameter_dict(dict): Dict with parameter name as key and values sheet as pd.DataFrame.
         """
@@ -133,6 +135,13 @@ class MISO2FileManager:
     def load_xls(self, path_type, sheet=None):
         """
         Load XLS of desired path_type.
+
+        Args:
+            path_type(MISO2FileType): Type of path
+            sheet(str): Sheetname
+
+        Returns:
+            pd.DataFrame: Read in file
         """
         _check_for_filetype(path_type)
         try:
@@ -258,6 +267,7 @@ class MISO2FileManager:
             parameter(str): Name of parameter
             parameter_dfs(list): List of pd.DataFrames
             mode(str): Update mode, one of "overwrite", "update" or "update_append".
+            sheet_name(str): Name of sheet. Defaults to values sheet.
         """
         logger.info(f"Writing values for {parameter} with mode: {mode}")
         data_dir = self.get_filepath(MISO2FileTypes.DATA_DIR)

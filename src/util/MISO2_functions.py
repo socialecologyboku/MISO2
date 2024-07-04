@@ -66,8 +66,12 @@ def copy_and_subset_parameter_dict(parameter_dict, nr_start, nr_stop):
 def nb_any(array):
     """
     Short circuit version of np.any.
-
     Returns True if an array contains a null value. Note that np.nan counts as a value.
+
+    Args:
+        array (np.ndarray): Array to be checked
+    Returns:
+        bool:
     """
     for x in array.flat:
         if x:
@@ -77,17 +81,33 @@ def nb_any(array):
 
 def compare_parameter_dict(parameter_dict, other_parameter_dict):
     """
-    Compare two parameter dicts values.
+    Compare two parameter dicts values for equality.
+
+    Args:
+        parameter_dict(dict): First dict of ODYM parameters
+        other_parameter_dict(): Second dict of ODYM parameters
+
+    Returns:
+        dict: Bool comparison by parameter name
     """
+
+    comparisons = {}
+
     for parameter_name, parameter_item in parameter_dict.items():
-        print(f"Comparing {parameter_name}")
+        logger.info(f"Comparing {parameter_name}")
         allclose = np.allclose(parameter_item.Values, other_parameter_dict[parameter_name].Values)
-        print(f"All close: {allclose}")
+        logger.info(f"All close: {allclose}")
+        comparisons[parameter_name] = allclose
+
+    return comparisons
 
 
 def swap_dict_by_mat_to_dict_by_param(values_dict):
     """
     Swap a nested dictionary which is ordered by material {parameter: dataframe} into format parameter: [dataframes]
+
+    Args:
+        values_dict(dict)
     """
     param_values_dict = {}
 
@@ -103,6 +123,7 @@ def swap_dict_by_mat_to_dict_by_param(values_dict):
 def equalize_enduses(enduse_array, enduse_selectors):
     """
     Equalizes values in the enduse dimension of an array to 1.
+
     Args:
         enduse_array(np.ndarray): Numpy array of enduses
         enduse_selectors(list): List of material indices where enduses must sum up to 1

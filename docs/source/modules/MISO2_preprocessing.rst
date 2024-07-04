@@ -1,10 +1,8 @@
-MISO2 Preprocessing
-===================
+MISO2 Preprocessing and file handling
+======================================
 
 .. automodule:: preprocessing.util.MISO2_file_types
     :members:
-    :private-members:
 
 .. automodule:: preprocessing.util.MISO2_preprocessing_functions
     :members:
-    :private-members:
