@@ -20,7 +20,7 @@ MISO2 wraps functionality from the `ODYM package <https://github.com/IndEcol/ODY
 slightly modified version of the ODYM v1 release adapted to our needs.
 
 Authors
-================
+---------------
 
 The MISO2 software was developed by a collaborative team of BOKU university:
 
@@ -32,22 +32,18 @@ The MISO2 software was developed by a collaborative team of BOKU university:
 Mention article authors?
 
 Contact
-================
+---------------
 
-For domain related questions and collaborations contact:
+For domain related questions and collaborations contact: dominik.wiedenhofer@boku.ac.at
 
-dominik.wiedenhofer@boku.ac.at
-
-For technical questions and bug reports, please open a GitHub issue or contact:
-
-benedikt.grammer@boku.ac.at
+For technical questions and bug reports, please open a GitHub issue or contact: benedikt.grammer@boku.ac.at
 
 License
-==================
+---------------
 This project is released under GNU GPL-3.0 License.
 
 How to cite
-==================
+---------------
 
 If you use MISO2 in your research, please cite the following article:
 
@@ -59,12 +55,23 @@ If you use MISO2 in your research, please cite the following article:
 Add link to published article
 
 Acknowledgments
----------------
+----------------
 
 This work was supported by the European Research Council (ERC) under the European Union’s Horizon 2020 research and
 innovation programme (MAT_STOCKS, grant agreement No 741950), and the European Union's Horizon Europe programme
-(CircEUlar, grant agreement No 101056810). We thank Jing Guo, Masahiro Oguchi, Zhi Cao, and Tomer Fishman for their
+(CircEUlar, grant agreement No 101056810).
+
+Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not
+necessarily reflect those of the European Union or granting authorities.
+
+We thank Jing Guo, Masahiro Oguchi, Zhi Cao, and Tomer Fishman for their
 data and helpful discussions.
+
+.. image:: figures/EU_flag.jpg
+   :width: 25%
+
+.. image:: figures/BOKU_Hauptlogo_RGB.png
+   :width: 35%
 
 .. toctree::
    :maxdepth: 1
@@ -76,7 +83,7 @@ data and helpful discussions.
    modules/API_reference
 
 Indices and tables
-==================
+-------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
