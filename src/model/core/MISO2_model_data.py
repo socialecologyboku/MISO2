@@ -3,7 +3,7 @@
 """
 Created on Thu Feb 17 14:55:32 2022
 
-@author: jstreeck,bgrammer
+@author: bgrammer & jstreeck
 """
 
 import logging as logger
@@ -12,7 +12,29 @@ import numpy as np
 
 class MISO2ModelData:
     """
-    Data class that holds arrays needed for ongoing calculations within the src model.
+    Data class that holds arrays needed for ongoing calculations within the MISO2 model.
+
+    Attributes:
+            total2primary (array-like or None): Placeholder for total to primary data.
+            new_scrap (array-like or None): Placeholder for new scrap data.
+            ratio_old_scrap (array-like or None): Placeholder for the ratio of old scrap.
+            rem_waste_Cycling_noAggr (array-like or None): Placeholder for remaining waste cycling without aggregation.
+            rec_virginAggr (array-like or None): Placeholder for recycled virgin aggregate data.
+            downc_constr_mats (array-like or None): Placeholder for downcycled construction materials.
+            GAS_split (array-like or None): Placeholder for GAS split data.
+            cementBitumen_2_concreteAsphalt (array-like or None): Placeholder for cement and bitumen to concrete and
+            asphalt conversion data.
+            bal_4 (array-like or None): Placeholder for balance data (bal_4).
+            bal_6 (array-like or None): Placeholder for balance data (bal_6).
+            bal_8 (array-like or None): Placeholder for balance data (bal_8).
+            bal_12 (array-like or None): Placeholder for balance data (bal_12).
+            bal_13a (array-like or None): Placeholder for balance data (bal_13a).
+            bal_13b (array-like or None): Placeholder for balance data (bal_13b).
+            bal_13c (array-like or None): Placeholder for balance data (bal_13c).
+            aggr_req_mg (array-like or None): Placeholder for aggregate requirement data.
+            appar_consump_end_use (array-like or None): Placeholder for apparent consumption end-use data.
+            trade_larger_req_g (int): Placeholder for trade larger requirement data, initialized to 0.
+            new_scrap_recycled (array-like or None): Placeholder for new scrap recycled data.
     """
 
     __slots__ = "total2primary", "new_scrap", "ratio_old_scrap", "rem_waste_Cycling_noAggr", \

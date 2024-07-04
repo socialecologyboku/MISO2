@@ -247,11 +247,27 @@ def miso_run_pool(config, run_model_arguments, save_to_file=None, sf=None, loggi
 
 def _check_run_pool_arguments(sf, config, mc, repetitions=None, max_reps=None):
     """
-    Checks validity of arguments for running pool.
+    Validates the arguments for running the pool method.
 
-    Checks for correct object types, legitimate range of nr, monte carlo sate and \
-        reasonable number of MC repetitions.
+    This method checks the validity of the provided arguments to ensure they are
+    of the correct type and within legitimate ranges. It verifies the following:
 
+    Args:
+        sf (MISO2SurvivalFunctions): Survival functions object to be validated.
+        config (MISO2Config): Configuration object to be validated.
+        mc (object): Monte Carlo state object to be compared with the configuration's state.
+        repetitions (int, optional): Number of repetitions for the Monte Carlo simulation. Defaults to None.
+        max_reps (int, optional): Maximum allowed repetitions for the Monte Carlo simulation. Defaults to None.
+
+    Raises:
+        TypeError: If `sf` is not an instance of MISO2SurvivalFunctions or `config` is not an instance of MISO2Config.
+        ValueError: If `config` is not randomized correctly, or if `repetitions` is not within the allowed range.
+
+    Notes:
+        - If `sf` contains more than one region, a warning is logged and only the first region will be processed.
+        - If `config` contains more than one region, a warning is logged and only the first region will be processed.
+        - The Monte Carlo state of `config` must match the provided `mc` state.
+        - The number of `repetitions` must be within the range 1 to `max_reps`.
     """
     if sf:
         if not isinstance(sf, MISO2SurvivalFunctions):
@@ -372,7 +388,30 @@ def miso_run_pool_mc_batch(config, run_model_arguments, sf=None, repetitions=100
 
 
 def miso_run_pool_sensitivity(config, run_model_arguments, logging_level=logger.WARNING):
+    """
+    Executes sensitivity parameter testing for a given region configuration.
 
+    This function performs sensitivity analysis by running the model with different parameter
+    groups and scenarios. It logs the process and outputs the results for each combination
+    of parameter group and scenario.
+
+    Args:
+        config(MISO2Config): Configuration object for the region to be analyzed.
+        run_model_arguments(dict): Arguments required to run the model, including the output path and
+                                    survival function parametrization.
+        logging_level(int, optional): Logging level for the file logger. Defaults to logger.WARNING.
+
+    Returns:
+        dict: A dictionary where keys are tuples of (parameter_group, scenario) and values are
+              the model outputs for those combinations.
+
+    Notes:
+        - Creates a timestamped log file in the output directory for the specified region.
+        - Iterates over parameter groups and scenarios to perform the sensitivity analysis.
+        - Uses a cache to store and reuse computed survival functions.
+        - For the "Multiplier" parameter group, temporarily modifies the multiplier values
+          during the analysis and restores them afterward.
+    """
     timestamp = datetime.now().strftime("%Y_%m_%d %H_%M_%S")
     region = config.master_classification["Countries"].Items[0]
     base_path = run_model_arguments["output_path"]

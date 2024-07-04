@@ -6,7 +6,7 @@ Core logic of calculating a MISO2 model.
 
 Created on Wed Feb 16 20:57:53 2022
 
-@author: jstreeck & barplank & bgrammer & dwiedenhofer
+@author: jstreeck & bgrammer
 """
 
 import logging as logger
@@ -46,7 +46,8 @@ class MISO2Model:
     Raises:
         AttributeError: If UUID of MISO2Config and MISO2SurvivalFunctions do not match up.
     """
-    # requirements: TODO: fill in additional requirements that need to be met for model core to work
+
+    # requirements:
     # 1. no trade of aggr_4concr / _4asph allowed (aggregates only traded for aggr_virgin)
     # 2. trade of aggr_virgin only allowed at p4
     # 3. trade of aggr_downcycl not allowed
@@ -111,8 +112,8 @@ class MISO2Model:
         """
         Wrapper for creating model data structures.
 
-        TODO: Contains hard-coded values that need to be refactored.
         Important: Due to legacy reasons, we construct arrays only for exactly one region.
+
         Args:
             miso_config(MISO2Config)
 
@@ -468,9 +469,6 @@ class MISO2Model:
             return miso_output
 
     def _create_output_metadata(self, r, estimate_aggregates, save_last_year):
-        # TO DO: Move to output factory
-        # replace hardcoded indices with config data values
-
         """
         Create Pandas indices and metadata for miso output.
 
@@ -528,7 +526,6 @@ class MISO2Model:
             logger.warning("WARNING: Difference in balance check exceeds tolerance")
             logger.warning(f"Value: {bal_sum}, Tolerance: {self.balance_error_tolerance}")
 
-    # ! we could get rid of this when using the annual version - or keep for double-checking
     def _check_balances_odym(self, mass_bal_process):
         """
         Checks ODYM balances per process and emits warning if they exceed tolerance.
@@ -784,9 +781,6 @@ class MISO2Model:
         # reshape matches shape of waste_cascade_factors to that of indexed trade flows
         # (if index changes, change reshape)
 
-        # TODO: check if always multiplying with waste cascade factors correct?
-        # (or need to dist. between export/import?)
-
         net_trade_aggr_p9 \
             = self.MISO2.ParameterDict['MISO2_Import_p4'].Values[aggr_pos_idx] \
             * waste_cascade_dict.get('waste_cascade_factor_p579')[waste_aggr_idx].reshape(len(position_aggr), 1) \
@@ -982,9 +976,8 @@ class MISO2Model:
 
     def P9_1_introduce_enduse_shares(self, r, mats, t, enduse_shares):
         """
-        P9.1 Introduce end-use shares
-        gross additions to stock (GAS) per end-use = (AC final products - waste) *\
-            end-use shares (new dimensions r,e,m,g,t)
+        P9.1 Introduce end-use shares gross additions to stock (GAS) per end-use = (AC final products - waste)
+        end-use shares (new dimensions r,e,m,g,t)
 
         Args:
             r(int): Region index.
@@ -1044,14 +1037,14 @@ class MISO2Model:
 
         # manipulate multipliers so that only the cement/bitumen that was transformed into concrete/asphalt
         # are set to zero in calc. of F_3_4a/b below
-        # multiplier data only has values != 0 for end-uses that shall transform cement/bitumen --> concrete/asphalt (these are == 1)
+        # multiplier data only has values != 0 for end-uses that shall transform cement/bitumen --> concrete/asphalt
+        # (these are == 1)
         delete_material_transfer = np.minimum(multiplier_cementBitumen, 1)
 
         # calculate aggregates that need to be supplied in p4 for making concrete and asphalt in p9
         # by subtracting cement/bitumen content and concrete/asphalt from recycling/trade from newly mixed concrete
         # and applying the waste cascade factor to cover aggregate losses from p4->p9
 
-        # TO DO: Consider splitting up these calcs into named variables because many sequential np.einsum
         self.MISO2.FlowDict['F_3_4a'].Values[aggr_4_concr_idx] = \
             (np.einsum('eg->e',
                        cementBitumen_2_concreteAsphalt[concrete_idx])

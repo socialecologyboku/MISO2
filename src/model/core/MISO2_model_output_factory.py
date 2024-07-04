@@ -180,7 +180,6 @@ class MISO2ModelOutputFactory:
         Raises:
             KeyError: When a Dataframe necessary for constructing the system is missing.
         """
-        # TODO implement so that we use ODYM to check 1) mass balance of all processes (total, per year?) +
         # double-checking of yearly and total mass-balances
 
         logger.info("Checking mass balances odym")
@@ -548,7 +547,8 @@ class MISO2ModelOutputFactory:
             multiplier_material_index(pd.Index): Index of multiplier materials.
             sector_index(pd.Index): Index of sectors (by name)
 
-        Returns: debug_output_dfs(dict): Dictionary of pd. Dataframes.
+        Returns:
+            debug_output_dfs(dict): Dictionary of pd. Dataframes.
 
         """
         debug_output_dfs = {}
