@@ -24,7 +24,6 @@ class MISO2MonteCarloSystematic_v2(MISO2MonteCarlo):
 
     Attributes:
         mc_state(dict): Dictionary with parameter names as key and their Monte Carlo state as bool.
-        index
         mc_deque_lower(deque): Deque containing randomized version of parameter dicts with below mean values.
         mc_deque_higher(deque): Deque containing randomized version of parameter dicts with higher than mean values.
         random_state(int): Set this value if you want reproducible values. Is repeated for all batches \
@@ -34,11 +33,8 @@ class MISO2MonteCarloSystematic_v2(MISO2MonteCarlo):
     def __init__(self):
         super().__init__()
         self.return_higher = False
-        self.mc_state = None
-        self.index = None
         self.mc_deque_lower = collections.deque()
         self.mc_deque_higher = collections.deque()
-        self.random_state = None
 
     def get_bias(self, mode):
         """
@@ -46,6 +42,9 @@ class MISO2MonteCarloSystematic_v2(MISO2MonteCarlo):
 
         Args:
             mode(str): Choose one of "next" or "last".
+
+        Raises:
+            ValueError: If mode is not "next" or "last"
         """
         if self.return_higher is True:
             if mode == "next":
@@ -251,6 +250,26 @@ class MISO2MonteCarloSystematic_v2(MISO2MonteCarlo):
         return parameter_dict_mc
 
     def _split_samples_lower_higher(self, stats_array_dict, half_sample_size):
+        """
+        Splits a sample array into lower and higher mean arrays based on statistics provided.
+
+            Args:
+                stats_array_dict (dict): Dictionary containing statistical data with keys like "Mean", "Min", and "Max".
+                half_sample_size (int): The desired size of each resulting split sample array.
+
+            Returns:
+                tuple: Two numpy arrays, `lower_samples` and `higher_samples`, each of length `half_sample_size`.
+
+            Raises:
+                AttributeError: If the dictionary does not contain sufficient data to determine the mean.
+                ValueError: If it's not possible to split the sample array into two arrays of the specified size.
+                NotImplementedError: If an unknown case occurs during biased randomization.
+
+            Notes:
+                - If the mean is close to 0.0, returns two arrays of zeros.
+                - If both "Min" and "Max" are close to 0.0, returns two arrays of zeros.
+                - Ensures the resulting arrays have at least `half_sample_size` elements.
+        """
 
         if "Mean" in stats_array_dict:
             mean = stats_array_dict["Mean"]

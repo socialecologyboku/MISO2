@@ -24,7 +24,6 @@ class MISO2MonteCarloSystematic(MISO2MonteCarlo):
 
     Attributes:
         mc_state(dict): Dictionary with parameter names as key and their Monte Carlo state as bool.
-        index
         mc_deque_lower(deque): Deque containing randomized version of parameter dicts with below mean values.
         mc_deque_higher(deque): Deque containing randomized version of parameter dicts with higher than mean values.
         random_state(int): Set this value if you want reproducible values. Is repeated for all batches \
@@ -34,15 +33,18 @@ class MISO2MonteCarloSystematic(MISO2MonteCarlo):
     def __init__(self):
         super().__init__()
         self.return_higher = False
-        self.mc_state = None
-        self.index = None
         self.mc_deque_lower = collections.deque()
         self.mc_deque_higher = collections.deque()
-        self.random_state = None
 
     def get_bias(self, mode):
         """
-        Return bias of next sample handed out by config.
+        Return bias of next or last sample handed out by config.
+
+        Args:
+            mode(string): One of "next" or "last"
+
+        Raises:
+             ValueError: If mode is unknown
         """
         if self.return_higher is True:
             if mode == "next":
@@ -250,9 +252,17 @@ class MISO2MonteCarloSystematic(MISO2MonteCarlo):
         """
         Returns two sample array of lower and higher samples for given stats array dict.
 
+        Args:
+            stats_array_dict(dict): Dictionary of stat arrays
+            half_sample_size(int): Number of samples to generate per array
+
         Returns:
             lower_samples(np.ndarray)
             higher_samples(np.ndarray)
+
+        Raises:
+            AttributeError: If stats array dict does not support the operation.
+
         """
         if "Mean" in stats_array_dict:
             mean = stats_array_dict["Mean"]

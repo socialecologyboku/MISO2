@@ -28,7 +28,7 @@ class MISO2MonteCarlo:
 
     Attributes:
         mc_state(dict): Dictionary with parameter names as key and their Monte Carlo state as bool.
-        index
+        index(): Can probably be removed safely.
         mc_deque(deque): Deque containing randomized version of parameter dicts. \
             Will be filled automatically when needed.
         random_state(int): Set this value if you want reproducible values. Is repeated for all batches \
@@ -43,7 +43,7 @@ class MISO2MonteCarlo:
 
     def get_bias(self, mode):
         """
-        Return bias config.
+        Return bias config, defaults to "none".
         """
         return "none"
 
@@ -95,7 +95,6 @@ class MISO2MonteCarlo:
 
         Args:
             random_state(int): The seed of the random state.
-
         """
 
         logger.info(f"Setting new seed as random state: {random_state}")
@@ -126,6 +125,7 @@ class MISO2MonteCarlo:
             base(np.array): Numpy array of parameter base values. Quantiles are drawn from here.
             alphas(np.array): Numpy array of alpha parameter. Parametrises each quantile.
             sample_size(int): Number of samples to be drawn.
+
         Returns:
             new_values(np.array): An ndarray of Dirichlet samples of shape (sample_size,base.shape).
         """
@@ -376,8 +376,6 @@ def stats_array_to_dict(uncertainty_list, parameter_limit):
         ValueError: if an uncertainty string with an unknown distribution is received.
 
     """
-
-    # set uncertainty to None for zero values?
 
     if np.isclose(uncertainty_list[0], 1):
         distribution = {'Type': 'Fixed',

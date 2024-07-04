@@ -1000,9 +1000,9 @@ def load_configs_from_folder(config_path, key="id"):
             elif key == "filename":
                 restored_configs[config_path] = miso_config
             else:
-                raise AttributeError
+                raise ValueError
 
-        except (IOError, AttributeError) as error:
+        except (IOError, ValueError) as error:
             logger.error("Something happened while trying to load a config")
             logger.exception(error)
     return restored_configs
