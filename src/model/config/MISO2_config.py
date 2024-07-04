@@ -3,10 +3,10 @@
 """
 Created on Tue Feb 15 14:03:01 2022
 
-@author: jstreeck & barplank & bgrammer
+@author: jstreeck & bgrammer
 """
 import glob
-import importlib
+from importlib.metadata import version
 import shutil
 from copy import deepcopy
 import logging as logger
@@ -171,7 +171,7 @@ class MISO2Config:
 
     def _create_classifications(self):
         """
-        @Jan: Can you add a description, I'm not sure what this does
+        Creates the ODYM classification objects.
 
         Raises:
             AttributeError: If an item select error was found in datafile.
@@ -206,7 +206,6 @@ class MISO2Config:
         Set the time, element, region, material and classification limits of the model as integers.
         """
         # Define dimension sizes
-        # TO DO: Refactor values into dictionary and use more verbose variable names
         logger.info("Defining dimension sizes")
         self.Nt = len(self.index_table.Classification[self.index_table.index.get_loc('Time')].Items)
         self.Ne = len(self.index_table.Classification[self.index_table.index.get_loc('Element')].Items)
@@ -220,10 +219,8 @@ class MISO2Config:
     def initialise_from_excel(self, config_filename, classification_filename,
                               parse_uncertainty=True,
                               uncertainty_settings_filename="MISO2_uncertainty_distribution_settings.xlsx"):
-
-        # TO DO: This should probably be refactored so that we take config path as a whole
         """
-        Parses MISO/ODYM data from excel files into the config to configure it.
+        Parses MISO/ODYM data from XLSX files into the config to configure it.
 
         The initialisation makes heavy use of the ODYM file format and parsing routines. \
             See the relevant documentation there for more details.
@@ -282,8 +279,7 @@ class MISO2Config:
         Args:
             mode(str): One of "next" or "last". Indicates whether next sample bias is returned, or previous sample bias.
         Returns:
-            bias(str): String
-
+            bias(str):
         """
         if self._monte_carlo is not None:
             return self._monte_carlo.get_bias(mode)
@@ -292,10 +288,13 @@ class MISO2Config:
 
     def set_monte_carlo_mode(self, mode, **kwargs):
         """
-        Set monte carlo to "normal" or "systematic" bias mode
+        Set monte carlo method to one of "normal", "systematic_bias", "systematic_bias_v2" or "sensitivity_by_parametergroup"
 
         Args:
             mode(str): String of mode
+
+        Raises:
+            AttributeError: If mode is not known.
         """
         if mode == "normal":
             logger.info("Setting MC mode normal")
@@ -407,7 +406,6 @@ class MISO2Config:
             # no subset needed, return original (which might get randomised)
 
         else:
-            # To do: change this so to return view of parameter dict, would speed up non-mc runtime considerably
             parameter_dict = misof.copy_and_subset_parameter_dict(
                 self.parameter_dict, nr_start, nr_stop)
 
@@ -474,8 +472,6 @@ class MISO2Config:
         self.sector_position = dict(zip(
             self.index_table.Classification[self.index_table.index.get_loc(
                 'End-Use Sectors')].Items, list(range(0, no_sectors))))
-
-        # no_elements = self.index_table.loc["Element"]["IndexSize"]
 
         self.multiplier_cementBitumen = np.ones((len(self.material_position),
                                                  len(self.sector_position)))
@@ -558,9 +554,6 @@ class MISO2Config:
         with open(os.path.join(folder, filename), 'wb') as handle:
             pickle.dump(self, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-        # different versions of python support different pickling protocols
-        # highest protocol should always work
-
     def set_global_monte_carlo_state(self, new_state, parameter_list=None):
         """
         Set Monte Carlo randomization of all parameters to the new state.
@@ -613,7 +606,10 @@ class MISO2Config:
     def _load_projects_spec(self, config_filename):
         """
         Load project specification and parse it with :func:`ODYMs parse model control \
-            <ODYM_Functions.ParseModelControl>`.
+            <ODYM_Functions.ParseModelControl>`. Data path will be taken from config data.
+
+        Args:
+            config_filename(str): Name of the config.
         """
 
         logger.info("Loading Project Specs")
@@ -682,7 +678,7 @@ class MISO2Config:
 
     def _read_parameterdict_from_excel(self, parse_uncertainty):
         """
-        Read a parameter dict from excel.
+        Read a parameter dict from XLSX.
 
         This method utilities ODYM parsing functions to create a parameter dictionary \
             from Excel files in the ODYM format. May raise exceptions from within the ODYM code.
@@ -729,8 +725,7 @@ class MISO2Config:
         """
         Read the parameter limits from Excel.
 
-        This additional parsing step is necessary
-        since ODYM does not allow for parsing additional information of parameter uncertainty.
+        This additional parsing step is necessary since ODYM does not allow for parsing additional information of parameter uncertainty.
         We decided not to modify the ODYM functionality to retain compatibility.
 
         Args:
@@ -748,7 +743,7 @@ class MISO2Config:
         all_uncertainty_settings = pd.read_excel(uncertainty_settings_filename, sheet_name=None)
 
         uncertainty_settings = all_uncertainty_settings["main"]
-        # pd.read_excel(uncertainty_settings_filename, sheet_name='main')
+
         self.uncertainty_settings = uncertainty_settings.set_index("Parameter_Name").T.to_dict()
 
         if "sensitivity" in all_uncertainty_settings.keys():
@@ -759,8 +754,8 @@ class MISO2Config:
         """
         Set default values for model duration.
 
-        These will the lowest and highest value of the model_classification["Time"] entry, w\
-            ith duration as their difference + 1.
+        These will the lowest and highest value of the model_classification["Time"] entry, with duration as their
+        difference + 1.
         """
 
         logger.info('Defining model index table and parameter dictionary')
@@ -774,7 +769,7 @@ class MISO2Config:
         Set a seed for the Monte Carlo randomization to get reproducible results.
 
         If this is set to any integer value, the Monte Carlo randomization will always return the same results.
-        This is currently only working for one batch of randomized data inputs.
+        !!!: This is currently only working for one batch of randomized data inputs.
 
         Args:
             random_state(int): Seed that is passed to the Scipy distributions.
@@ -814,8 +809,11 @@ class MISO2Config:
         Returns a copy of the new scrap cycle array.
         If there is a cutoff value set in the config, will return all zeros (scenario option).
 
-        :param time: Time index in years that is compared to cutoff value.
-        :return:
+        Args:
+            time(int): Time index in years that is compared to cutoff value.
+
+        Returns:
+            new_scrap_cycle(np.array): Array of new scrap cycle
         """
         if self.new_scrap_cycle_cutoff is not None and time > self.new_scrap_cycle_cutoff:
             logger.info(f"Cutoff year {self.new_scrap_cycle_cutoff} reached, returning zero for new scrap")
@@ -834,7 +832,7 @@ class MISO2Config:
             additional_data_dir: Directory where Metadata template is located.
         """
 
-        metadata = {"MISO2_software_version": importlib.metadata.version('MISO2'),
+        metadata = {"MISO2_software_version": version('MISO2'),
                     "MISO2_database_version": self.script_config["Version of master classification"],
                     "Date_created": datetime.now().strftime("%Y_%m_%d_%H:%M:%S"),
                     "MISO2_config_id": str(self.unique_id), "Units": "kilotons", "Comment": ""}
@@ -923,7 +921,6 @@ def split_config(miso_config, index):
     new_split_config.index_table.Classification = classification_list
 
     # pandas deepcopy does not copy nested objects
-    # do not store mutable objects in dataframes -> antipattern
     # workaround here necessary due to ODYM data structure
 
     new_split_config.index_table.Classification.loc["Region"].Items \
@@ -1028,5 +1025,3 @@ def save_split_configs_to_folder(path, config_name, config):
         logger.info(f"split config {new_filename}")
         new_config = split_config(config, i)
         new_config.save_to_pickle(filename=new_filename, folder=path)
-
-
