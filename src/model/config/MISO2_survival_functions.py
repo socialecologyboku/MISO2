@@ -23,8 +23,6 @@ class MISO2SurvivalFunctions:
     As an object of this class is dependent on the correct parametrization, the UUID of the config
     is saved and both are cross-checked by the model to prevent running the model on non-matching
     MISO2Configs and MISO2SurvivalFunctions.
-    For correct usage, either pass both a logger and a MISO2Config to create a new valid SF Array,
-    or pass no arguments to create an empty object.
 
     Args:
         miso_config(MISOConfig): The MISOConfig from which the survival arrays are constructed.
