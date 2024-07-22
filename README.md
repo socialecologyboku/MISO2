@@ -46,7 +46,7 @@ If you use MISO2 in your research, please cite the following article:
 
 Wiedenhofer, D. Streeck, J. Wieland, H. Grammer, B. Baumgart, A. Plank, B. Helbig, C. Pauliuk, S. Haberl, H. and Krausmann, F.
 “From Extraction to End-uses and Waste Management: Modelling Economy-wide Material Cycles and Stock Dynamics Around the World,” 
-SSRN Electronic Journal, January 2024. DOI: 10.2139/ssrn.4794611
+SSRN Electronic Journal, January 2024. [DOI: 10.2139/ssrn.4794611](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4794611)
 
 ## Acknowledgments
 
