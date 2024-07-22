@@ -29,7 +29,7 @@ author = 'Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    'sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'nbsphinx', 'sphinx_rtd_theme'
+    'sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'nbsphinx', 'sphinx_rtd_theme', "sphinx.ext.githubpages"
 ]
 
 templates_path = ['_templates']
@@ -48,7 +48,7 @@ html_context = {
     "github_repo": "MISO2",
     "github_version": "master",
     "github_user": "socialecologyboku",
-    "conf_py_path": "docs/source/", # Path in the checkout to the docs root
+    "conf_py_path": "/docs/source/", # Path in the checkout to the docs root
 }
 
 master_doc = "index"

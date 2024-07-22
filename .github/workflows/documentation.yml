@@ -11,9 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
+      - name: Install Pandoc
+        run: sudo apt-get install -y pandoc
       - name: Install dependencies
         run: |
-          pip install sphinx sphinx_rtd_theme myst_parser nbsphinx
+          pip install -r requirements.txt
       - name: Sphinx build
         run: |
           sphinx-build docs/source _build

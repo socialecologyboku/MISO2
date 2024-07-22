@@ -5,8 +5,8 @@ The MISO2 model (Material Inputs, Stocks, and Outputs) is a dynamic, inflow-driv
 which covers 14 supply chain processes from raw material extraction and processing, stock-building and stock dynamics, to end-of-life flows and waste management. For detailed information and documentation, we refer to the peer-reviewed, open-access publication (Wiedenhofer et al. 2024).
 
 With the MISO2 model, we also provide a global, country-level application which covers 23 raw
-materials and 20 stock-building materials across 177 countries from 1900 to 2016:
-MAT_STOCKS database version 1.0, ZENODO LINK GOES HERE.
+materials and 20 stock-building materials across 177 countries from 1900 to 2016. The
+MAT_STOCKS database version 1.0 can be `found on Zenodo <https://zenodo.org/records/12794253>`_.
 
 **Key Features**:
 
@@ -17,7 +17,7 @@ MAT_STOCKS database version 1.0, ZENODO LINK GOES HERE.
 
 The documentation #LINK provides an overview of the software, guides on setup and usage, as well as detailed API references. We give working examples of how to process this input data, run the model, and access the results. Input data for two countries, United States of America and United Kingdom, is provided to test the model.
 
-MISO2 wraps functionality from the `ODYM package (https://github.com/IndEcol/ODYM)`_ and contains a slightly modified version of the ODYM v1 release adapted to our needs.
+MISO2 wraps functionality from the `ODYM package <https://github.com/IndEcol/ODYM>`_ and contains a slightly modified version of the ODYM v1 release adapted to our needs.
 
 Authors
 ---------------
@@ -32,9 +32,11 @@ The MISO2 software was developed by a collaborative team from BOKU University:
 Contact
 ---------------
 
-For domain-related questions and collaborations, contact: dominik.wiedenhofer@boku.ac.at
+For domain-related questions and collaborations, contact:
+dominik.wiedenhofer@boku.ac.at
 
-For technical questions and bug reports, please open a GitHub issue or contact: benedikt.grammer@boku.ac.at
+For technical questions and bug reports, please open a GitHub issue or contact:
+benedikt.grammer@boku.ac.at
 
 License
 ---------------
@@ -48,7 +50,7 @@ If you use MISO2 in your research, please cite the following article:
 
 Wiedenhofer, D. Streeck, J. Wieland, H. Grammer, B. Baumgart, A. Plank, B. Helbig, C. Pauliuk, S. Haberl, H. and Krausmann, F.
 “From Extraction to End-uses and Waste Management: Modelling Economy-wide Material Cycles and Stock Dynamics Around the World,”
-SSRN Electronic Journal, January 2024. [DOI: 10.2139/ssrn.4794611](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4794611)
+SSRN Electronic Journal, January 2024. [DOI: 10.2139/ssrn.4794611] `Link to paper <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4794611>`_
 
 Acknowledgments
 ---------------
