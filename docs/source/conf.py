@@ -47,7 +47,8 @@ html_context = {
     "display_github": True,
     "github_repo": "MISO2",
     "github_version": "master",
- #   "conf_py_path": "/source/", # Path in the checkout to the docs root
+    "github_user": "socialecologyboku",
+    "conf_py_path": "docs/source/", # Path in the checkout to the docs root
 }
 
 master_doc = "index"
