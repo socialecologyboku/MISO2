@@ -52,9 +52,3 @@ html_context = {
 }
 
 master_doc = "index"
-
-try:
-    import config.MISO2_config
-    print("Succesfully imported MISO2_config")
-except ImportError as e:
-    print(f"Error importing module: {e}")

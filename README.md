@@ -2,7 +2,8 @@
 
 The MISO2 model (Material Inputs, Stocks, and Outputs) is a dynamic, inflow-driven material stock-flow model, which covers 14 supply chain processes from raw material extraction and processing, stock-building and stock dynamics, to end-of-life flows and waste management. For detailed information and documentation, we refer to the peer-reviewed, open-access publication (Wiedenhofer et al. 2024).
 
-With the MISO2 model, we also provide a global, country-level application which covers 23 raw materials and 20 stock-building materials across 177 countries from 1900 to 2016: MAT_STOCKS database version 1.0, ZENODO LINK GOES HERE.
+With the MISO2 model, we also provide a global, country-level application which covers 23 raw materials and 20
+stock-building materials across 177 countries from 1900 to 2016: MAT_STOCKS database version 1.0 (on [Zenodo](https://zenodo.org/records/12794253))
 
 **Key Features**:
 
@@ -11,7 +12,7 @@ With the MISO2 model, we also provide a global, country-level application which 
 - Comprehensive coverage of raw materials, stock-building materials, end-uses and stock dynamics, as well as end-of-life and waste flows
 - Global, country-level application from 1900 to 2016, with a spin-up period from 1820 to 1900.
 
-The documentation #LINK provides an overview of the software, guides on setup and usage, as well as detailed API references. We give working examples of how to process this input data, run the model, and access the results. Input data for two countries, United States of America and United Kingdom, is provided to test the model.
+The documentation provides an overview of the software, guides on setup and usage, as well as detailed API references. We give working examples of how to process this input data, run the model, and access the results. Input data for two countries, United States of America and United Kingdom, is provided to test the model.
 
 MISO2 wraps functionality from the [ODYM package](https://github.com/IndEcol/ODYM) and contains a slightly modified version of the ODYM v1 release adapted to our needs.
 
