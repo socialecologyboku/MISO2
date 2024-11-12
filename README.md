@@ -40,9 +40,9 @@ This project is released under the GNU GPL-3.0 License.
 
 If you use MISO2 in your research, please cite the following article:
 
-Wiedenhofer, D. Streeck, J. Wieland, H. Grammer, B. Baumgart, A. Plank, B. Helbig, C. Pauliuk, S. Haberl, H. and Krausmann, F.
-“From Extraction to End-uses and Waste Management: Modelling Economy-wide Material Cycles and Stock Dynamics Around the World,”
-SSRN Electronic Journal, January 2024. [DOI: 10.2139/ssrn.4794611](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4794611)
+Wiedenhofer, D., Streeck, J., Wieland, H., Grammer, B., Baumgart, A., Plank, B., Helbig, C., Pauliuk, S., Haberl, H.,
+& Krausmann, F. (2024). From extraction to end-uses and waste management: Modeling economy-wide material cycles and stock
+dynamics around the world. Journal of Industrial Ecology, 1–17. [DOI: 10.1111/jiec.13575] (https://onlinelibrary.wiley.com/doi/10.1111/jiec.13575)
 
 ## Acknowledgments
 
