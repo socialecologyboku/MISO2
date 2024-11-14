@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MISO2 Model data &mdash; MISO2  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MISO2 Multiprocessing" href="MISO2_multiprocessing.html" />
+    <link rel="prev" title="MISO2 Model" href="MISO2_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MISO2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/database.html">Database</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="API_reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#input">Input</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="API_reference.html#model-core">Model core</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="MISO2_model.html">MISO2 Model</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MISO2 Model data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#model.core.MISO2_model_data.MISO2ModelData"><code class="docutils literal notranslate"><span class="pre">MISO2ModelData</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="MISO2_multiprocessing.html">MISO2 Multiprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#output">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#utilities">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#odym">ODYM</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MISO2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="API_reference.html">API Reference</a></li>
+      <li class="breadcrumb-item active">MISO2 Model data</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/socialecologyboku/MISO2/blob/master/docs/source/modules/MISO2_model_data.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-model.core.MISO2_model_data">
+<span id="miso2-model-data"></span><h1>MISO2 Model data<a class="headerlink" href="#module-model.core.MISO2_model_data" title="Link to this heading"></a></h1>
+<p>Created on Thu Feb 17 14:55:32 2022</p>
+<p>&#64;author: bgrammer &amp; jstreeck</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.core.MISO2_model_data.</span></span><span class="sig-name descname"><span class="pre">MISO2ModelData</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData" title="Link to this definition"></a></dt>
+<dd><p>Data class that holds arrays needed for ongoing calculations within the MISO2 model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.total2primary">
+<span class="sig-name descname"><span class="pre">total2primary</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.total2primary" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for total to primary data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.new_scrap">
+<span class="sig-name descname"><span class="pre">new_scrap</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.new_scrap" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for new scrap data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.ratio_old_scrap">
+<span class="sig-name descname"><span class="pre">ratio_old_scrap</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.ratio_old_scrap" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for the ratio of old scrap.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.rem_waste_Cycling_noAggr">
+<span class="sig-name descname"><span class="pre">rem_waste_Cycling_noAggr</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.rem_waste_Cycling_noAggr" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for remaining waste cycling without aggregation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.rec_virginAggr">
+<span class="sig-name descname"><span class="pre">rec_virginAggr</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.rec_virginAggr" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for recycled virgin aggregate data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.downc_constr_mats">
+<span class="sig-name descname"><span class="pre">downc_constr_mats</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.downc_constr_mats" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for downcycled construction materials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.GAS_split">
+<span class="sig-name descname"><span class="pre">GAS_split</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.GAS_split" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for GAS split data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.cementBitumen_2_concreteAsphalt">
+<span class="sig-name descname"><span class="pre">cementBitumen_2_concreteAsphalt</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.cementBitumen_2_concreteAsphalt" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for cement and bitumen to concrete and</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">asphalt</span> <span class="pre">conversion</span> <span class="pre">data.</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.bal_4">
+<span class="sig-name descname"><span class="pre">bal_4</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.bal_4" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for balance data (bal_4).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.bal_6">
+<span class="sig-name descname"><span class="pre">bal_6</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.bal_6" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for balance data (bal_6).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.bal_8">
+<span class="sig-name descname"><span class="pre">bal_8</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.bal_8" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for balance data (bal_8).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.bal_12">
+<span class="sig-name descname"><span class="pre">bal_12</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.bal_12" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for balance data (bal_12).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.bal_13a">
+<span class="sig-name descname"><span class="pre">bal_13a</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.bal_13a" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for balance data (bal_13a).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.bal_13b">
+<span class="sig-name descname"><span class="pre">bal_13b</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.bal_13b" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for balance data (bal_13b).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.bal_13c">
+<span class="sig-name descname"><span class="pre">bal_13c</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.bal_13c" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for balance data (bal_13c).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.aggr_req_mg">
+<span class="sig-name descname"><span class="pre">aggr_req_mg</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.aggr_req_mg" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for aggregate requirement data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.appar_consump_end_use">
+<span class="sig-name descname"><span class="pre">appar_consump_end_use</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.appar_consump_end_use" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for apparent consumption end-use data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.trade_larger_req_g">
+<span class="sig-name descname"><span class="pre">trade_larger_req_g</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.trade_larger_req_g" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for trade larger requirement data, initialized to 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.new_scrap_recycled">
+<span class="sig-name descname"><span class="pre">new_scrap_recycled</span></span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.new_scrap_recycled" title="Link to this definition"></a></dt>
+<dd><p>Placeholder for new scrap recycled data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array-like or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model_data.MISO2ModelData.create_data_structures">
+<span class="sig-name descname"><span class="pre">create_data_structures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dimensions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_multiplier_materials</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model_data.MISO2ModelData.create_data_structures" title="Link to this definition"></a></dt>
+<dd><p>Preallocate numpy arrays that are later used during the model calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dimensions</strong> (<em>dict</em>) – Dictionary with N dimensions</p></li>
+<li><p><strong>selector_multiplier_materials</strong> (<em>list</em>) – List with foundation multiplier material selectors.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="MISO2_model.html" class="btn btn-neutral float-left" title="MISO2 Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MISO2_multiprocessing.html" class="btn btn-neutral float-right" title="MISO2 Multiprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre Baumgart, Dominik Wiedenhofer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MISO2 Config &mdash; MISO2  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MISO2 File manager" href="MISO2_file_manager.html" />
+    <link rel="prev" title="API Reference" href="API_reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MISO2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/database.html">Database</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="API_reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="API_reference.html#input">Input</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MISO2 Config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#model.config.MISO2_config.MISO2Config"><code class="docutils literal notranslate"><span class="pre">MISO2Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model.config.MISO2_config.load_configs_from_folder"><code class="docutils literal notranslate"><span class="pre">load_configs_from_folder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model.config.MISO2_config.save_split_configs_to_folder"><code class="docutils literal notranslate"><span class="pre">save_split_configs_to_folder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model.config.MISO2_config.split_config"><code class="docutils literal notranslate"><span class="pre">split_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="MISO2_file_manager.html">MISO2 File manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MISO2_monte_carlo.html">MISO2 Monte Carlo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MISO2_survival_functions.html">MISO2 Survival functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MISO2_system_definitions.html">MISO2 System definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#model-core">Model core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#output">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#utilities">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#odym">ODYM</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MISO2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="API_reference.html">API Reference</a></li>
+      <li class="breadcrumb-item active">MISO2 Config</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/socialecologyboku/MISO2/blob/master/docs/source/modules/MISO2_config.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-model.config.MISO2_config">
+<span id="miso2-config"></span><h1>MISO2 Config<a class="headerlink" href="#module-model.config.MISO2_config" title="Link to this heading"></a></h1>
+<p>Created on Tue Feb 15 14:03:01 2022</p>
+<p>&#64;author: jstreeck &amp; bgrammer</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.config.MISO2_config.</span></span><span class="sig-name descname"><span class="pre">MISO2Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mc_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config" title="Link to this definition"></a></dt>
+<dd><p>Class that holds read-only parameters and data for the MISO2 model.</p>
+<p>Input data is parsed from .xls files and brought into a format accepted by the ODYM module.
+Created with a unique identifier to allow for pickling and reloading the config.
+The config object is necessary to construct survival functions. If injected into a MISO2         model object, it will a pass a copy of the input data for computation. When it parses data with uncertainty,
+Monte Carlo randomization of the data can be enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config_path</strong> (<em>str</em>) – Default save path when config is pickled.</p></li>
+<li><p><strong>data_path</strong> (<em>str</em>) – Path to input data.</p></li>
+<li><p><strong>timestamp</strong> (<em>str</em>) – Time of config creation. Will be used for default filenames of logs and output.</p></li>
+<li><p><strong>mc_batch_size</strong> (<em>int</em>) – Number of randomized copies of the data that are created when Monte Carlo is active.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.config_path">
+<span class="sig-name descname"><span class="pre">config_path</span></span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.config_path" title="Link to this definition"></a></dt>
+<dd><p>A str that gives the default save location for config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.check_attributes">
+<span class="sig-name descname"><span class="pre">check_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.check_attributes" title="Link to this definition"></a></dt>
+<dd><p>Checks if all attributes of the config object are set.</p>
+<p>Monte Carlo object is allowed to be None if config was parsed without uncertainty values.         Note that this does not check if set objects are of the correct type or sensible value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AttributeError</strong> – If parameter dict or model classifications are empty or an attribute,                 other than the Monte Carlo object, are not set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.get_bias">
+<span class="sig-name descname"><span class="pre">get_bias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.get_bias" title="Link to this definition"></a></dt>
+<dd><p>Returns bias configuration of underlying monte carlo object, if any. Else returns “no uncertainty”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – One of “next” or “last”. Indicates whether next sample bias is returned, or previous sample bias.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bias(str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.get_new_scrap_cycle">
+<span class="sig-name descname"><span class="pre">get_new_scrap_cycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.get_new_scrap_cycle" title="Link to this definition"></a></dt>
+<dd><p>Returns a copy of the new scrap cycle array.
+If there is a cutoff value set in the config, will return all zeros (scenario option).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time</strong> (<em>int</em>) – Time index in years that is compared to cutoff value.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of new scrap cycle</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>new_scrap_cycle(np.array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.get_parameter_dict">
+<span class="sig-name descname"><span class="pre">get_parameter_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nr_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nr_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.get_parameter_dict" title="Link to this definition"></a></dt>
+<dd><p>Returns a copy of the ODYM-Parameter dictionary.</p>
+<p>If the config contains multiple regions, the method will return a subset copy by the configs nr_start
+and nr_stop indices. When Monte Carlo randomization is enabled, the underlying MISO2MonteCarlo object
+will create a queue with randomized versions of the Values. If there is only one region in the config
+and Monte Carlo randomization is disabled, it will return a reference.</p>
+<p>Please note that this method does not support returning randomized parameter dicts of more than one region.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nr_start</strong> (<em>int</em>) – Region start index. Defaults to configs nr_start.</p></li>
+<li><p><strong>nr_stop</strong> (<em>int</em>) – Region stop index. Defaults to configs nr_stop.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>WasteRatioError</strong> – if the recov and unrecov waste ratio of a process exceed 1.</p></li>
+<li><p><a class="reference internal" href="MISO2_exceptions.html#util.MISO2_exceptions.InputLimitError" title="util.MISO2_exceptions.InputLimitError"><strong>InputLimitError</strong></a> – if the values violate the specified hard limits.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.get_randomization_state">
+<span class="sig-name descname"><span class="pre">get_randomization_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.get_randomization_state" title="Link to this definition"></a></dt>
+<dd><p>Get Monte Carlo state of config.</p>
+<p>If a Monte Carlo object exists and any parameter is set to be randomized, returns True. Returns false otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Monte Carlo state of config.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>mc_state(bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.initialise_from_excel">
+<span class="sig-name descname"><span class="pre">initialise_from_excel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classification_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_uncertainty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uncertainty_settings_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MISO2_uncertainty_distribution_settings.xlsx'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.initialise_from_excel" title="Link to this definition"></a></dt>
+<dd><p>Parses MISO/ODYM data from XLSX files into the config to configure it.</p>
+<p>The initialisation makes heavy use of the ODYM file format and parsing routines.             See the relevant documentation there for more details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config_filename</strong> (<em>str</em>) – Name of the config.xls.</p></li>
+<li><p><strong>classification_filename</strong> (<em>str</em>) – Name of the master classification xls.</p></li>
+<li><p><strong>parse_uncertainty</strong> (<em>bool/str</em>) – Try to parse uncertainty data from the parameter files. Defaults to true.</p></li>
+<li><p><strong>uncertainty_settings_filename</strong> (<em>str</em>) – Name of the parameter limits xls. Defaults to                 “MISO2_uncertainty_settings.xls”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>AttributeError</strong> – If any config attribute has not been set to some value.</p></li>
+<li><p><a class="reference internal" href="MISO2_exceptions.html#util.MISO2_exceptions.WasteRateError" title="util.MISO2_exceptions.WasteRateError"><strong>WasteRateError</strong></a> – If the combined recov and unrecov waste rates of the parsed data                 exceed 1. This is an error in the input data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.reload_classification_properties">
+<span class="sig-name descname"><span class="pre">reload_classification_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classification_properties_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MISO2_classification_properties.xlsx'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.reload_classification_properties" title="Link to this definition"></a></dt>
+<dd><p>Reload the classification properties from file.</p>
+<p>Use this method to reload the classification properties if they have changed
+after initialisation of the config object.</p>
+<p>Warning: Additional props are reset to None before parsing the file again, so any
+exception in the setting of classifications will leave the miso config in an illegal state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>classification_properties_filename</strong> (<em>str</em>) – configs data path. Defaults to “MISO2_classification_properties.xlsx”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.save_metadata">
+<span class="sig-name descname"><span class="pre">save_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_data_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.save_metadata" title="Link to this definition"></a></dt>
+<dd><p>Saves metadata to xlsx.</p>
+<p>Note that not all metadata is constructed automatically, check the file to make sure it is correct.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_path</strong> – Path to save output file to.</p></li>
+<li><p><strong>additional_data_dir</strong> – Directory where Metadata template is located.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.save_to_pickle">
+<span class="sig-name descname"><span class="pre">save_to_pickle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.save_to_pickle" title="Link to this definition"></a></dt>
+<dd><p>Saves the entire MISO Config object to a pickle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the file. Defaults to &lt;UUID&gt;_config.pickle</p></li>
+<li><p><strong>folder</strong> (<em>str</em>) – Folder path. Defaults to config_path variable of MISO config.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.set_global_monte_carlo_state">
+<span class="sig-name descname"><span class="pre">set_global_monte_carlo_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.set_global_monte_carlo_state" title="Link to this definition"></a></dt>
+<dd><p>Set Monte Carlo randomization of all parameters to the new state.</p>
+<p>This will reset the MISO2MonteCarlo objects queue of randomized dicts (if there was one).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_state</strong> (<em>bool</em>) – Set Monte Carlo to on/off.</p></li>
+<li><p><strong>parameter_list</strong> (<em>list</em>) – Optional: Specify parameters to be set as a list of strings.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>AttributeError</strong> – when no Monte Carlo object is set in the config.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.set_monte_carlo_mode">
+<span class="sig-name descname"><span class="pre">set_monte_carlo_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.set_monte_carlo_mode" title="Link to this definition"></a></dt>
+<dd><p>Set monte carlo method to one of “normal”, “systematic_bias”, “systematic_bias_v2” or “sensitivity_by_parametergroup”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – String of mode</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>AttributeError</strong> – If mode is not known.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.config.MISO2_config.MISO2Config.set_random_state">
+<span class="sig-name descname"><span class="pre">set_random_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.MISO2Config.set_random_state" title="Link to this definition"></a></dt>
+<dd><p>Set a seed for the Monte Carlo randomization to get reproducible results.</p>
+<p>If this is set to any integer value, the Monte Carlo randomization will always return the same results.
+!!!: This is currently only working for one batch of randomized data inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>random_state</strong> (<em>int</em>) – Seed that is passed to the Scipy distributions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.config.MISO2_config.load_configs_from_folder">
+<span class="sig-prename descclassname"><span class="pre">model.config.MISO2_config.</span></span><span class="sig-name descname"><span class="pre">load_configs_from_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'id'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.load_configs_from_folder" title="Link to this definition"></a></dt>
+<dd><p>Tries to load all .pickle files in a directory as MISO2Configs and returns them as a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config_path</strong> (<em>str</em>) – A filepath</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – Key of return dict. One of “id”(default) or filename.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dict of MISO2Config objects.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>configs(dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.config.MISO2_config.save_split_configs_to_folder">
+<span class="sig-prename descclassname"><span class="pre">model.config.MISO2_config.</span></span><span class="sig-name descname"><span class="pre">save_split_configs_to_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.save_split_configs_to_folder" title="Link to this definition"></a></dt>
+<dd><p>Splits a Config object into multiple objects, one per region, and saves them to a folder.</p>
+<p>Individual files receive a running index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Folder path to save to</p></li>
+<li><p><strong>config_name</strong> (<em>str</em>) – Filename of the config.</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="#model.config.MISO2_config.MISO2Config" title="model.config.MISO2_config.MISO2Config"><em>MISO2Config</em></a>) – Config to split</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.config.MISO2_config.split_config">
+<span class="sig-prename descclassname"><span class="pre">model.config.MISO2_config.</span></span><span class="sig-name descname"><span class="pre">split_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">miso_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.config.MISO2_config.split_config" title="Link to this definition"></a></dt>
+<dd><p>Returns a subset of the config by region index.</p>
+<p>As far as possible, it will give views of the data instead of copies. Split objects receive new ids.
+This subset config is mainly intended to be passed to another process, by copy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>miso_config</strong> (<a class="reference internal" href="#model.config.MISO2_config.MISO2Config" title="model.config.MISO2_config.MISO2Config"><em>MISO2Config</em></a>) – Config to be subset.</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – Regional index number to subset. Must be within the index range of the MISO2Config.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Config subset to one region.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>split_config(<a class="reference internal" href="#model.config.MISO2_config.MISO2Config" title="model.config.MISO2_config.MISO2Config">MISO2Config</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="API_reference.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MISO2_file_manager.html" class="btn btn-neutral float-right" title="MISO2 File manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre Baumgart, Dominik Wiedenhofer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

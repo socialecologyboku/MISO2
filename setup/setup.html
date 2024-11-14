@@ -1,0 +1,166 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup &mdash; MISO2  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="../usage/usage.html" />
+    <link rel="prev" title="Parametrisation of uncertainty values in the MISO2 model" href="../notebooks/MISO2_uncertainty_distributions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MISO2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background/about.html">About</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#clone-the-repository-or-download-the-miso2-code">1. Clone the repository or download the MISO2 code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-conda-environment">2. Create a conda environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-miso2">3. Install MISO2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-the-project-in-an-ide-of-your-choosing">4. Open the project in an IDE of your choosing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/API_reference.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MISO2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Setup</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/socialecologyboku/MISO2/blob/master/docs/source/setup/setup.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Link to this heading"></a></h1>
+<p>It is possible to run the MISO2 code on any combination of IDE and Python environment you prefer. You will need to install
+the packages required by MISO2 as well as the MISO2 package itself. Below we provide instructions on how to run the
+code using Conda and Spyder. You can also omit the steps involving Conda and directly install the MISO2 package, which
+will only install the minimum dependencies required by MISO2.</p>
+<section id="clone-the-repository-or-download-the-miso2-code">
+<h2>1. Clone the repository or download the MISO2 code<a class="headerlink" href="#clone-the-repository-or-download-the-miso2-code" title="Link to this heading"></a></h2>
+<p>Download the MISO2 code or create a local clone of the Github repository, for example by using the
+<a class="reference external" href="https://desktop.github.com">GitHub Desktop application</a>.</p>
+</section>
+<section id="create-a-conda-environment">
+<h2>2. Create a conda environment<a class="headerlink" href="#create-a-conda-environment" title="Link to this heading"></a></h2>
+<p>Install either Anaconda Navigator, Conda or Miniconda. Three files in the root of the repository are of interest:</p>
+<ul class="simple">
+<li><p><strong>environment.yml</strong> – Provides all relevant package names. You can use conda to create an environment for you from this file.</p></li>
+<li><p><strong>Readme.md</strong> – Contains the minimum version numbers of the packages used during MISO2 development. Refer to this if you have compatibility issues.</p></li>
+<li><p><strong>requirements.txt</strong> – Contains the dependencies required by the MISO2 model. If you install the conda environment, these requirements are already fulfilled.</p></li>
+</ul>
+<p>The most simple way to setup an environment is from within the Anaconda Navigator in the “Environments” tab.
+Navigate to the “environments.yml” and create the environment from the file. Activate it by clicking on the arrow next to it.
+Then go your home screen and launch Spyder from the newly created environment.</p>
+<a class="reference internal image-reference" href="../_images/conda_import_environment.jpeg"><img alt="../_images/conda_import_environment.jpeg" class="align-center" src="../_images/conda_import_environment.jpeg" style="width: 700px;" />
+</a>
+<dl class="simple">
+<dt>You can also install the environment via terminal::</dt><dd><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment.yml</span></code></p>
+</dd>
+<dt>After installation, activate the environment with::</dt><dd><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">&lt;environment-name&gt;</span></code></p>
+</dd>
+</dl>
+<p>This will install all packages MISO2 requires.</p>
+</section>
+<section id="install-miso2">
+<h2>3. Install MISO2<a class="headerlink" href="#install-miso2" title="Link to this heading"></a></h2>
+<p>To actually run the code, you will also need to install the MISO2 package itself. In the terminal, run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code>
+in the base folder containing the <cite>setup.py</cite>. Add the <code class="docutils literal notranslate"><span class="pre">-e</span></code> flag for development mode, if you want to
+interactively change code in the MISO2 package and have it reload automatically.</p>
+</section>
+<section id="open-the-project-in-an-ide-of-your-choosing">
+<h2>4. Open the project in an IDE of your choosing<a class="headerlink" href="#open-the-project-in-an-ide-of-your-choosing" title="Link to this heading"></a></h2>
+<p>For example using Spyder with your environment from the Anaconda navigator.</p>
+<a class="reference internal image-reference" href="../_images/conda_select_environment.jpeg"><img alt="../_images/conda_select_environment.jpeg" class="align-center" src="../_images/conda_select_environment.jpeg" style="width: 700px;" />
+</a>
+<p>Alternatively, you can use the terminal and activate the environment with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">&lt;environment&gt;</span></code> and then starting <code class="docutils literal notranslate"><span class="pre">spyder</span></code>.</p>
+<p>Once Spyder is opened, create a new project, but choose to do so from an existing directory and your MISO2 folder.</p>
+<a class="reference internal image-reference" href="../_images/spyder_import_project.jpeg"><img alt="../_images/spyder_import_project.jpeg" class="align-center" src="../_images/spyder_import_project.jpeg" style="width: 400px;" />
+</a>
+<p>The code should now be ready to use.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../notebooks/MISO2_uncertainty_distributions.html" class="btn btn-neutral float-left" title="Parametrisation of uncertainty values in the MISO2 model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../usage/usage.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre Baumgart, Dominik Wiedenhofer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

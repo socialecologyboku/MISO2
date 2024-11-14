@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parametrisation of uncertainty values in the MISO2 model &mdash; MISO2  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setup" href="../setup/setup.html" />
+    <link rel="prev" title="Uncertainty" href="../background/uncertainty_parametrisation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MISO2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../background/about.html">About</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../background/software_architecture.html">Software Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../background/system_definition.html">System definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../background/enduses.html">End-use product groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../background/data.html">Input data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../background/uncertainty_parametrisation.html">Uncertainty</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Parametrisation of uncertainty values in the MISO2 model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Input-variables">Input variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Allocation-parameters">Allocation parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Uncertainty-implementations">Uncertainty implementations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Monte-Carlo-simulation">Monte Carlo simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Systematic-error-('biased')-monte-carlo-simulation">Systematic-error (‘biased’) monte-carlo simulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#One-at-a-time-sensitivity-testing">One-at-a-time sensitivity testing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Uncertainty-parametrisation-in-Python">Uncertainty parametrisation in Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/API_reference.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MISO2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../background/about.html">About</a></li>
+          <li class="breadcrumb-item"><a href="../background/uncertainty_parametrisation.html">Uncertainty</a></li>
+      <li class="breadcrumb-item active">Parametrisation of uncertainty values in the MISO2 model</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/socialecologyboku/MISO2/blob/master/docs/source/notebooks/MISO2_uncertainty_distributions.ipynb" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Parametrisation-of-uncertainty-values-in-the-MISO2-model">
+<h1>Parametrisation of uncertainty values in the MISO2 model<a class="headerlink" href="#Parametrisation-of-uncertainty-values-in-the-MISO2-model" title="Link to this heading"></a></h1>
+<section id="Input-variables">
+<h2>Input variables<a class="headerlink" href="#Input-variables" title="Link to this heading"></a></h2>
+<p>Input variables of the MISO2 model other than allocation parameters have the dimensions c (country), e (element; unity), m (material), y (year). The element dimension is present as an index, but since there is only the unity element in the MISO2 definition, it is omitted from formulas. Each input variable <span class="math notranslate nohighlight">\(X\)</span> follows an uncertainty distribution:</p>
+<div class="math notranslate nohighlight">
+\[X_{c, m, y} ∼D_{c, m, y}, \quad D \in \{\mathcal{F}, \mathcal{N}, \mathcal{LN}, \mathcal{U}, \mathcal{U}_{l} \}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a fixed value, usually identical to the original input, <span class="math notranslate nohighlight">\(\mathcal{N}\)</span> is the normal distribution, <span class="math notranslate nohighlight">\(\mathcal{LN}\)</span> the LogNormal distribution, <span class="math notranslate nohighlight">\(\mathcal{U}\)</span> the Uniform distribution and <span class="math notranslate nohighlight">\(\mathcal{U}_{l}\)</span> a left-shifted Uniform distribution used for recycling inputs.</p>
+<p>Each input variable has an uncertainty assessment which translates into a coefficient of variation (CV) that parametrizes its distribution.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{N} (\mu= X, \quad \sigma= \mu \cdot CV) \\
+\mathcal{LN} (\mu= X, \quad \sigma= CV) \\
+\mathcal{U} \left[a,b\right], \quad a= X - X \cdot CV, b= X + X \cdot CV, \quad a \geq 0, \quad b\leq 1 \\
+\mathcal{U}_{l} \left[a,b\right], \quad a= X - X \cdot CV \cdot 1.5, \quad b= X + X \cdot CV \cdot 0.5, \quad a \geq 0, \quad b\leq 1 \\\end{split}\]</div>
+<p>Although distributions can be specified by variable, in the MISO2 input data all variables of a parameter follow the same distribution, e.g. primary production inputs follow the LogNormal distribution for all countries, all materials and all years, and only individually differ by their uncertainty assessment.</p>
+</section>
+<section id="Allocation-parameters">
+<h2>Allocation parameters<a class="headerlink" href="#Allocation-parameters" title="Link to this heading"></a></h2>
+<p>Uncertainty is handled slightly different for allocation parameters, where variables over one dimensions need to sum up to a total of exactly 1. This is the case for the enduse-sector splits that follow a Dirichlet distribution:</p>
+<div class="math notranslate nohighlight">
+\[X_{c, m, y} ∼ \mathcal{D}_{c, m, y} (\alpha), \alpha = \left(\alpha_1, \alpha_2, ..., \alpha_n \right), \quad n= \text{#enduse-sectors}\]</div>
+<p>The alpha parameters are estimated following Helbig et al. 2022, S-19:</p>
+<div class="math notranslate nohighlight">
+\[Var[X]=\frac{\frac{1}{4}}{\alpha_0+1}, \quad E [X_i ]= \frac{\alpha_i}{\alpha_0}\]</div>
+</section>
+</section>
+<section id="Uncertainty-implementations">
+<h1>Uncertainty implementations<a class="headerlink" href="#Uncertainty-implementations" title="Link to this heading"></a></h1>
+<section id="Monte-Carlo-simulation">
+<h2>Monte Carlo simulation<a class="headerlink" href="#Monte-Carlo-simulation" title="Link to this heading"></a></h2>
+<p>Monte-Carlo randomisation is handled by the MISO2Config and MISO2MonteCarlo classes. If a config object is parsed with uncertainty parsing enabled, an uncertainty parametrisation will be created for all parameters that have information on their uncertainty sheet in their cover sheet. Parameters without the information are processed normally. A MonteCarlo object injected into the config that handles the generation of samples.</p>
+<p>Uncertainty generation must be switched on explicitly for all parts of the workflow, during config creation (for parsing in uncertainties) and in the config object by enabling a monte carlo method.</p>
+<p><em>Note on input data structure</em>: Since values and uncertainty are parsed concurrently with matching indexes, currently either no uncertainty can be parsed or there must be an uncertainty distribution present for each value at the same index. This is handled automatically by the uncertainty creation scripts, but care must be taken when manually editing or sorting the tables.</p>
+<p>When running the model, the explicit monte carlo methods for multiprocessing must be used. They support automatic calculations of means and variance via an online algorithm, and/or saving the results to parquets.</p>
+<p><em>Note on file saving</em>: This saves three parquets (of different dimensions) per region and mc run. This is not ideal, as the number of files can quickly overwhelm the file system, and will be changed to batch saving in future implementations.</p>
+<p>Uncertainty can be toggled for each individual parameter. When uncertainty is activated, the config will not return the original input data to the MISO2Model object, but a randomized version. A batch size needs to be supplied. When randomisation is active, for each individual variable this number of samples will be generated and then combined into the same number of randomised parameter dictionaries. The parameter dicts are stored in a queue that is refilled by a new batch, once it runs out.</p>
+<p><em>Note on batch size</em>: Pre-creation of batches is very memory intensive and needs to be tailored to the memory availability / number of processes. This is necessary, since the high number of input variables result in an equally high number of sampling calls.</p>
+<p>This MC implementation was not used in the final results. When varying each variable independently, the uncertainty effects cancel out due to the aggregation effects over time, i.e. an increase in one year is offset by a decrease in the next. Overall, this produces very low uncertainties for stock variables that do not reflect the true uncertainty within the model.</p>
+</section>
+<section id="Systematic-error-('biased')-monte-carlo-simulation">
+<h2>Systematic-error (‘biased’) monte-carlo simulation<a class="headerlink" href="#Systematic-error-('biased')-monte-carlo-simulation" title="Link to this heading"></a></h2>
+<p>In the standard implementation described above, each input variable is sampled independently. This is the default implementation. Alternatively, a systematic-error version of the MonteCarlo object can be injected into the config. In terms of implementation this works analogously, with the exception that only samples that jointly deviate to above or below the input variable are aggregated into a config. In a randomized parameter dict returned by this MonteCarlo object, all variables are either
+sampled from above or below their original input variables. This information is contained in the metadata object of the output. Since the overall goal is to increase or decrease stocks, some parameters (such as AggregateMultipliers) have to be adjusted in the opposite direction to have the desired effect. The results of this scheme are hard to intuitively understand and introduce some logic inconsistencies (e.g. import/export balance), so it was not further pursued.</p>
+</section>
+<section id="One-at-a-time-sensitivity-testing">
+<h2>One-at-a-time sensitivity testing<a class="headerlink" href="#One-at-a-time-sensitivity-testing" title="Link to this heading"></a></h2>
+<p>As a third option, uncertainty can be tested by one-at-a-time increase of parameter groups. Individual datapoints are adjusted by their CV in both direction each, which gives us a lower and upper bound for their overall impact on the model results. This version is discussed in more detail in the published article.</p>
+</section>
+</section>
+<section id="Uncertainty-parametrisation-in-Python">
+<h1>Uncertainty parametrisation in Python<a class="headerlink" href="#Uncertainty-parametrisation-in-Python" title="Link to this heading"></a></h1>
+<p>As the terminology around distributions in the original MISO2 data, the stats-array package, and the Scipy library used in the software is not identical, this document is meant as a reference to the implementation used in our software.</p>
+<p>Uncertainty in the input data is specified by these parameters:</p>
+<p><strong>Value</strong> - Original value, usually the mean of the distribution and Scipy’s “loc” attribute.</p>
+<p><strong>CV</strong> = First parameter of the distribution, usually the coefficient of variation. This is transformed into an appropriate scale parameter of a Scipy distribution. Please note while this is generally called CV, it might relate to different parameters for certain distribution as referenced in this document.</p>
+<p><strong>Shape</strong> = Second parameter of the distribution. Only relevant for Weibull, Gamma and Beta distribution.</p>
+<p><strong>Minimum/Maximum</strong>: Are taken from the global uncertainty settings for the normal distribution and provide hard limits. Usually they will specify zero as a minimum to prevent negative input data. For the Uniform distribution, these refer to the sample bounds.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimum</span> <span class="o">=</span> <span class="n">limit_a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">maximum</span> <span class="o">=</span> <span class="n">limit_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="mf">0.55</span>
+<span class="n">sd</span> <span class="o">=</span> <span class="n">cv</span><span class="o">*</span><span class="n">mean</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">limit_a</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">sd</span><span class="p">,</span> <span class="p">(</span><span class="n">limit_b</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">sd</span>
+<span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">truncnorm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">mean</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">sd</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7f9b984347c0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_5_1.png" src="../_images/notebooks_MISO2_uncertainty_distributions_5_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">sd</span> <span class="o">=</span> <span class="n">mean</span><span class="o">*</span><span class="n">cv</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">mean</span><span class="o">-</span><span class="n">sd</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">mean</span><span class="o">+</span><span class="n">sd</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7f9b981a7850&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_7_1.png" src="../_images/notebooks_MISO2_uncertainty_distributions_7_1.png" />
+</div>
+</div>
+<p>Recycling rates uniform uncertainty is estimated downwards by moving the uniform window to 1.5 times the standard deviation toward the lower bound and only 0.5 times toward the upper bound. This is based on the assumption that recycling rates are somewhat unlikely to be higher than reported.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">sd</span> <span class="o">=</span> <span class="n">mean</span><span class="o">*</span><span class="n">cv</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">mean</span><span class="o">-</span><span class="mf">1.5</span><span class="o">*</span><span class="n">sd</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">mean</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">sd</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7f9b982293a0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_10_1.png" src="../_images/notebooks_MISO2_uncertainty_distributions_10_1.png" />
+</div>
+</div>
+<p>Variables that are defined by a mean (<span class="math notranslate nohighlight">\(\mu_{X})\)</span> and a CV (<span class="math notranslate nohighlight">\(CV= \frac{\sigma_{X}}{\mu_{X}}\)</span>) are represented in the LogNormal distribution by the <span class="math notranslate nohighlight">\(\mu =\ln \left({\frac {\mu _{X}^{2}}{\sqrt {\mu _{X}^{2}+\sigma _{X}^{2}}}}\right), \quad \sigma ^{2}=\ln \left(1+{\frac {\sigma _{X}^{2}}{\mu _{X}^{2}}}\right)\)</span> (see: <a class="reference external" href="https://en.wikipedia.org/wiki/Log-normal_distribution">https://en.wikipedia.org/wiki/Log-normal_distribution</a>)</p>
+<p>Mean and standard deviation of the original Normal distribution are retained, but the LogNormal distribution will be slightly skewed to the right.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_x</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">var_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu_x</span><span class="o">*</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">mu_lognormal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+    <span class="n">mu_x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mu_x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">var_x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">var_lognormal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="p">(</span><span class="n">var_x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">mu_x</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">frozen_lognorm</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_lognormal</span><span class="p">),</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu_lognormal</span><span class="p">))</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">frozen_lognorm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">test_values</span> <span class="o">=</span> <span class="n">frozen_lognorm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">test_values</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">test_values</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+50.062108471274215
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+15.016345817598006
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_14_2.png" src="../_images/notebooks_MISO2_uncertainty_distributions_14_2.png" />
+</div>
+</div>
+<p>LogNormal for lifetimes is processed via the ODYM module and follows a different format. The parameter MISO2_Lifetimes is interpreted as mean values, while the parameter MISO2_Lifetimes_deviation is the corresponding standard deviation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lt</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Mean&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&quot;StdDev&quot;</span><span class="p">:</span> <span class="mf">1.85</span><span class="p">}</span>
+
+<span class="n">LT_LN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">lt</span><span class="p">[</span><span class="s1">&#39;Mean&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">lt</span><span class="p">[</span><span class="s1">&#39;Mean&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">lt</span><span class="p">[</span><span class="s1">&#39;Mean&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="n">lt</span><span class="p">[</span><span class="s1">&#39;StdDev&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">lt</span><span class="p">[</span><span class="s1">&#39;StdDev&#39;</span><span class="p">])))</span>
+<span class="c1"># calculate parameter sigma of underlying normal distribution:</span>
+<span class="n">SG_LN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">lt</span><span class="p">[</span><span class="s1">&#39;Mean&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">lt</span><span class="p">[</span><span class="s1">&#39;Mean&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="n">lt</span><span class="p">[</span><span class="s1">&#39;StdDev&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">lt</span><span class="p">[</span><span class="s1">&#39;StdDev&#39;</span><span class="p">])))</span>
+<span class="c1"># compute survial function</span>
+<span class="n">sf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="n">SG_LN</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                                         <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">LT_LN</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+<span class="c1"># plt.savefig(&quot;sf_stdlogn.png&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7f9bd0367a60&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_17_1.png" src="../_images/notebooks_MISO2_uncertainty_distributions_17_1.png" />
+</div>
+</div>
+<p>Unlike the other distributions, the Dirichlet distribution requires a vector of input measures. In the context of the MISO2 software, these are most likely enduse shares, which are required to sum up to 1. CV is taken to be the concentration parameter alpha, which determines the shape of the Dirichlet distribution, e.g. at which end values are concentrated. The higher alpha, the closer the random values will be to the original values, while lower alpha will skew the distribution towards one of
+the ends depending on their prior values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="n">base_measures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">])</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">alphas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>
+<span class="c1"># concentration parameter if equal for all values, could also be different for each base measure</span>
+<span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">:</span>
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">dirichlet_samples</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">dirichlet</span><span class="p">(</span><span class="n">base_measures</span><span class="o">*</span><span class="n">alpha</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dirichlet_samples</span><span class="p">)</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_20_0.png" src="../_images/notebooks_MISO2_uncertainty_distributions_20_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_20_1.png" src="../_images/notebooks_MISO2_uncertainty_distributions_20_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_20_2.png" src="../_images/notebooks_MISO2_uncertainty_distributions_20_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_20_3.png" src="../_images/notebooks_MISO2_uncertainty_distributions_20_3.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_20_4.png" src="../_images/notebooks_MISO2_uncertainty_distributions_20_4.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[89]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_measures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">])</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.25</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="c1"># concentration parameter if equal for all values, could also be different for each base measure</span>
+<span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">:</span>
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">dirichlet_samples</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">dirichlet</span><span class="p">(</span><span class="n">base_measures</span><span class="o">*</span><span class="n">alpha</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dirichlet_samples</span><span class="p">)</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_21_0.png" src="../_images/notebooks_MISO2_uncertainty_distributions_21_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_21_1.png" src="../_images/notebooks_MISO2_uncertainty_distributions_21_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_21_2.png" src="../_images/notebooks_MISO2_uncertainty_distributions_21_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_21_3.png" src="../_images/notebooks_MISO2_uncertainty_distributions_21_3.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_MISO2_uncertainty_distributions_21_4.png" src="../_images/notebooks_MISO2_uncertainty_distributions_21_4.png" />
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../background/uncertainty_parametrisation.html" class="btn btn-neutral float-left" title="Uncertainty" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../setup/setup.html" class="btn btn-neutral float-right" title="Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre Baumgart, Dominik Wiedenhofer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
