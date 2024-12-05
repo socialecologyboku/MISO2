@@ -1,0 +1,653 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MISO2 Model &mdash; MISO2  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MISO2 Model data" href="MISO2_model_data.html" />
+    <link rel="prev" title="MISO2 System definitions" href="MISO2_system_definitions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MISO2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/database.html">Database</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="API_reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#input">Input</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="API_reference.html#model-core">Model core</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MISO2 Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#model.core.MISO2_model.MISO2Model"><code class="docutils literal notranslate"><span class="pre">MISO2Model</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="MISO2_model_data.html">MISO2 Model data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MISO2_multiprocessing.html">MISO2 Multiprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#output">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#utilities">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#odym">ODYM</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MISO2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="API_reference.html">API Reference</a></li>
+      <li class="breadcrumb-item active">MISO2 Model</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/socialecologyboku/MISO2/blob/master/docs/source/modules/MISO2_model.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="miso2-model">
+<span id="id1"></span><h1>MISO2 Model<a class="headerlink" href="#miso2-model" title="Link to this heading"></a></h1>
+<p id="module-model.core.MISO2_model">Core logic of calculating a MISO2 model.</p>
+<p>Created on Wed Feb 16 20:57:53 2022</p>
+<p>&#64;author: jstreeck &amp; bgrammer</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.core.MISO2_model.</span></span><span class="sig-name descname"><span class="pre">MISO2Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">miso_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">miso_survival_functions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nr_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nr_stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balance_error_tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model" title="Link to this definition"></a></dt>
+<dd><p>Contains the logic for calculating a MISO2 Model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>miso_config</strong> (<a class="reference internal" href="MISO2_config.html#model.config.MISO2_config.MISO2Config" title="model.config.MISO2_config.MISO2Config"><em>MISO2Config</em></a>) – Model configuration. Should not be written to from the model object.</p></li>
+<li><p><strong>miso_survival_functions</strong> (<a class="reference internal" href="MISO2_survival_functions.html#model.config.MISO2_survival_functions.MISO2SurvivalFunctions" title="model.config.MISO2_survival_functions.MISO2SurvivalFunctions"><em>MISO2SurvivalFunctions</em></a>) – Precomputed survival functions.</p></li>
+<li><p><strong>nr_start</strong> (<em>int</em>) – Region start index. This needs only be set when the MISO2Config data contains             more than one region and the data needs to be subset for computation. Defaults to 0.</p></li>
+<li><p><strong>nr_stop</strong> (<em>int</em>) – Region stop index. Defaults to 1.</p></li>
+<li><p><strong>balance_error_tolerance</strong> (<em>float</em>) – Error tolerance for mass balancing. Defaults to 1e-5.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.miso_config">
+<span class="sig-name descname"><span class="pre">miso_config</span></span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.miso_config" title="Link to this definition"></a></dt>
+<dd><p>Model configuration. Should not be written to from the model object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="MISO2_config.html#model.config.MISO2_config.MISO2Config" title="model.config.MISO2_config.MISO2Config">MISO2Config</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.sf_array">
+<span class="sig-name descname"><span class="pre">sf_array</span></span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.sf_array" title="Link to this definition"></a></dt>
+<dd><p>Precomputed survival functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="MISO2_survival_functions.html#model.config.MISO2_survival_functions.MISO2SurvivalFunctions" title="model.config.MISO2_survival_functions.MISO2SurvivalFunctions">MISO2SurvivalFunctions</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.balance_error_tolerance">
+<span class="sig-name descname"><span class="pre">balance_error_tolerance</span></span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.balance_error_tolerance" title="Link to this definition"></a></dt>
+<dd><p>Error tolerance for mass balancing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.MISO2">
+<span class="sig-name descname"><span class="pre">MISO2</span></span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.MISO2" title="Link to this definition"></a></dt>
+<dd><p>ODYM MFAsystem object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ODYM_classes.html#odym.ODYM_Classes.MFAsystem" title="odym.ODYM_Classes.MFAsystem">MFAsystem</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.miso_model_data">
+<span class="sig-name descname"><span class="pre">miso_model_data</span></span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.miso_model_data" title="Link to this definition"></a></dt>
+<dd><p>Holds arrays for ongoing calculations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="MISO2_model_data.html#model.core.MISO2_model_data.MISO2ModelData" title="model.core.MISO2_model_data.MISO2ModelData">MISO2ModelData</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.MFA_system_control">
+<span class="sig-name descname"><span class="pre">MFA_system_control</span></span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.MFA_system_control" title="Link to this definition"></a></dt>
+<dd><p>Used for error checking. Holds control values of system,             such as information about expected zero and non-zero values of MFA system after model run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>AttributeError</strong> – If UUID of MISO2Config and MISO2SurvivalFunctions do not match up.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P10_Dynamic_Stock_Model">
+<span class="sig-name descname"><span class="pre">P10_Dynamic_Stock_Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P10_Dynamic_Stock_Model" title="Link to this definition"></a></dt>
+<dd><p>Dynamic Stock Model calculation of stock by cohort and EoL outflows</p>
+<p>Modifies F_10_11 / S_10 inplace.</p>
+<p>TO DO: See if the stock computation can be simplified. Currently running over all years every year.
+odym function .compute_s_c_inflow_driven() needs dimensions t,tc; if running per year these are not         given anymore. tbd</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index</p></li>
+<li><p><strong>dimensions</strong> (<em>dict</em>) – Model dimensions</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P11_waste_collection">
+<span class="sig-name descname"><span class="pre">P11_waste_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P11_waste_collection" title="Link to this definition"></a></dt>
+<dd><p>Waste collection, calculate collected potentially recoverable new scrap and old scrap and total</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P12_trade_recoverable_waste">
+<span class="sig-name descname"><span class="pre">P12_trade_recoverable_waste</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P12_trade_recoverable_waste" title="Link to this definition"></a></dt>
+<dd><p>Trade of potentially recoverable waste</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P13_recycling_downcycling">
+<span class="sig-name descname"><span class="pre">P13_recycling_downcycling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_downc_mats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_scrap_cycle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P13_recycling_downcycling" title="Link to this definition"></a></dt>
+<dd><p>P13 recycling and downcycling</p>
+<p>start with flow F_12_13 = apparent supply of recoverable waste
+cycling data can differ in two dimensions: it can be in absolute flows (ABSOLUTE) or flows can be calculated by
+multiplying waste flows by cycling rates (RATE); and it can either refer to end-of-life cycling only (EoL),
+or to total cycling (TOTAL), which includes EoL and new scrap cycling for recycling, these four categories are
+exclusive per material and year (and thus additive), meaning that a material can either have absolute or rate
+recycling input data for either EoL or Total recycling for downcycling, only the exclusive (additive) categories
+absolute or rate recycling input data apply, as we assume that no new scrap is downcycled (and thus both cases
+always refer to EoL not Total cycling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+<li><p><strong>selector_downc_mats</strong> (<em>list</em>) – Indices of downcycle materials</p></li>
+<li><p><strong>new_scrap_cycle</strong><strong>(</strong><strong>)</strong></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P14_final_waste_disposal">
+<span class="sig-name descname"><span class="pre">P14_final_waste_disposal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P14_final_waste_disposal" title="Link to this definition"></a></dt>
+<dd><p>Final waste disposal</p>
+<p>Calculate final waste flows to outside system boundaries; calculate for previous year,             as F_13_14 could only be determined after
+Calculating actual use of recycled and downcycled aggregate in current year from supply of previous year</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P20_buffer_transfer">
+<span class="sig-name descname"><span class="pre">P20_buffer_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_stocks_flows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P20_buffer_transfer" title="Link to this definition"></a></dt>
+<dd><p>Buffer transferring cycled materials (20a/b) and potential supply of aggregates,             virgin &amp; downcycled from year t to t+1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+<li><p><strong>buffer_stocks_flows</strong> (<em>dict</em>) – Dictionary mapping buffer flows and stocks</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P4_add_raw_product_trade">
+<span class="sig-name descname"><span class="pre">P4_add_raw_product_trade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P4_add_raw_product_trade" title="Link to this definition"></a></dt>
+<dd><p>Add raw product trade, calculate apparent consumption and balance P4.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>mats</strong> (<em>int</em>) – Material selector index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P4_generate_production_raw_products">
+<span class="sig-name descname"><span class="pre">P4_generate_production_raw_products</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_NoAggr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P4_generate_production_raw_products" title="Link to this definition"></a></dt>
+<dd><p>Assign primary production and total production from input data and adjust to flow definitions.</p>
+<p>Primary production F_3_4a or total production total2primary from input data. The latter adjusted to
+F_3_4b via re/downcycling flows 20_4a/b, F_3_4a and F_3_4b are exclusive per material, meaning that either
+total or primary production is reported per material</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>selector_NoAggr</strong> (<em>list</em>) – List of non-aggregate indices.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P5_fabricate_semi_finished_products">
+<span class="sig-name descname"><span class="pre">P5_fabricate_semi_finished_products</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P5_fabricate_semi_finished_products" title="Link to this definition"></a></dt>
+<dd><p>Fabricate semi-finished products
+#recoverable (a) &amp; unrecoverable (b) waste during fabrication</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>mats</strong> (<em>int</em>) – Material selector index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P6_trade_semi_finished_products">
+<span class="sig-name descname"><span class="pre">P6_trade_semi_finished_products</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P6_trade_semi_finished_products" title="Link to this definition"></a></dt>
+<dd><p>Add trade of semi-finished products, calculate apparent consumption and balance P6.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>mats</strong> (<em>int</em>) – Material selector index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P7_manufacture_final_products">
+<span class="sig-name descname"><span class="pre">P7_manufacture_final_products</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P7_manufacture_final_products" title="Link to this definition"></a></dt>
+<dd><p>Manufacture final products via subtracting recoverable (a) &amp; unrecoverable (b) waste during manufacturing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>mats</strong> (<em>int</em>) – Material selector index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P8_trade_final_products">
+<span class="sig-name descname"><span class="pre">P8_trade_final_products</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P8_trade_final_products" title="Link to this definition"></a></dt>
+<dd><p>Add trade of final products, calculate apparent consumption and balance P8</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>mats</strong> (<em>int</em>) – Material selector index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P9_1_introduce_enduse_shares">
+<span class="sig-name descname"><span class="pre">P9_1_introduce_enduse_shares</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enduse_shares</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P9_1_introduce_enduse_shares" title="Link to this definition"></a></dt>
+<dd><p>P9.1 Introduce end-use shares gross additions to stock (GAS) per end-use = (AC final products - waste)
+end-use shares (new dimensions r,e,m,g,t)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>mats</strong> (<em>int</em>) – Material selector index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+<li><p><strong>enduse_shares</strong> (<em>np.Array</em>) – Array of enduse shares</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P9_2_change_material_categories">
+<span class="sig-name descname"><span class="pre">P9_2_change_material_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cementBitumen_2_concreteAsphalt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">appar_consump_end_use</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiplier_cementBitumen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waste_cascade_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P9_2_change_material_categories" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>P9.2 change of material categories: cement &amp; bitumen + sand &amp; gravel –&gt; concrete &amp; asphalt</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+<li><p><strong>cementBitumen_2_concreteAsphalt</strong><strong>(</strong><strong>)</strong></p></li>
+<li><p><strong>appar_consump_end_use</strong> (<em>np.Array</em>) – remgt array</p></li>
+<li><p><strong>multiplier_cementBitumen</strong><strong>(</strong><strong>)</strong></p></li>
+<li><p><strong>waste_cascade_dict</strong> (<em>dict</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P9_2_recov_unrecov_waste_flows">
+<span class="sig-name descname"><span class="pre">P9_2_recov_unrecov_waste_flows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cementBitumen_2_concreteAsphalt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_Aggr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trade_larger_req_g</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P9_2_recov_unrecov_waste_flows" title="Link to this definition"></a></dt>
+<dd><p>Set P9 standard flows F9_11, recoverable (a) &amp; unrecoverable (b) waste during fabrication.</p>
+<p>Conditionally for aggregates, recov. waste = input per end-use * waste rate per end-use             + excess aggregate imports (can be used in next year)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+<li><p><strong>mats</strong> (<em>list</em>) – Material selector index.</p></li>
+<li><p><strong>cementBitumen_2_concreteAsphalt</strong> (<em>np.Array</em>) – apparent consumption of materials with bitumen/cement partially transformed
+to asphalt, concrete (see P9_2_change_material_categories)</p></li>
+<li><p><strong>selector_Aggr</strong> (<em>list</em>) – List of aggregate selectors</p></li>
+<li><p><strong>trade_larger_req_g</strong> (<em>np.Array</em>) – array with non-zero values, if net imports of virgin aggregates larger than aggregate requirement
+(aggregate requirement &amp; trade_larger_req_g estimated in first loop of ‘mats’ selector, considering only
+non-aggregate materials; and compared to virgin aggregate net imports in second loop of ‘mats’ selector;
+trade_larger_req_g is overflowing into recoverable waste flows, to be recycled next year; this is a contingency
+for the rare case that imports of virgin aggregates larger than aggregate requirement )                                        )</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.P9_3_aggregate_gap">
+<span class="sig-name descname"><span class="pre">P9_3_aggregate_gap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enduse_shares</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endUse_aggregates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_downc_mats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_multiplier_materials</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr_req_mg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waste_cascade_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net_trade_aggr_p9</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.P9_3_aggregate_gap" title="Link to this definition"></a></dt>
+<dd><p>Aggregate Gap: estimate demand of aggregates, appraise supply from recycled and             downcycled aggregates and calc. additional required virgin</p>
+<p>Aggregate input (time steps inherent)
+Estimate demand per end-use relevant for aggregate use as specified in variable
+endUse_aggregates (e.g. buildings, roads, other construction)
+Conditional: only run aggregate gap once (when prior flows for all materials
+except aggregates have been calculated) enable or disable estimation of aggregate gap</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+<li><p><strong>enduse_shares</strong> (<em>np.Array</em>) – something else</p></li>
+<li><p><strong>endUse_aggregates</strong> (<em>dict</em>) – Maps enduses (?) to aggregate multiplier values</p></li>
+<li><p><strong>selector_downc_mats</strong> (<em>list</em>) – List of aggregate selectors</p></li>
+<li><p><strong>selector_multiplier_materials</strong> (<em>list</em>) – List of materials with foundation aggregate multipliers</p></li>
+<li><p><strong>aggr_req_mg</strong><strong>(</strong><strong>)</strong></p></li>
+<li><p><strong>net_trade_aggr_p9</strong><strong>(</strong><strong>)</strong></p></li>
+<li><p><strong>waste_cascade_dict</strong> (<em>dict</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.balance_process">
+<span class="sig-name descname"><span class="pre">balance_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process_output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.balance_process" title="Link to this definition"></a></dt>
+<dd><p>Balance process of all materials.</p>
+<p>set negative consumption values to value of previous year
+:param process_output: Output of a process.
+:type process_output: np.Array
+:param r: Region index.
+:type r: int
+:param t: Time index.
+:type t: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>balance_item(np.Array): Difference between original and modified array</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>cons_balanced(np.Array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.balance_process_indexed">
+<span class="sig-name descname"><span class="pre">balance_process_indexed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">process_output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_selector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.balance_process_indexed" title="Link to this definition"></a></dt>
+<dd><p>Balance process of selected material.</p>
+<p>Set negative consumption values to value of previous year</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>process_output</strong> (<em>np.Array</em>) – Output of a process.</p></li>
+<li><p><strong>material_selector</strong> (<em>int</em>) – Index of selected material.</p></li>
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>balance_item(np.Array): Difference between original and modified array</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>cons_balanced(np.Array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.calc_net_trade_aggr_p9">
+<span class="sig-name descname"><span class="pre">calc_net_trade_aggr_p9</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waste_cascade_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.calc_net_trade_aggr_p9" title="Link to this definition"></a></dt>
+<dd><p>Calculate net trade of aggregates at process p9 (which requires subtraction of waste losses depending on at
+which part of supply chain trade occurs)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+<li><p><strong>waste_cascade_dict</strong> (<em>dict</em>) – Waste cascade dictionary</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.calc_waste_cascades">
+<span class="sig-name descname"><span class="pre">calc_waste_cascades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.calc_waste_cascades" title="Link to this definition"></a></dt>
+<dd><p>Calculate waste cascade factors throughout processes 5-7-9 to adjust backward calculations for aggregates         in P9.2, P9.3. (i.e. add the losses waste occurring throughout processes 5-7-9 to calculate original flows)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.define_mfa_system">
+<span class="sig-name descname"><span class="pre">define_mfa_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mfa_system_initializer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.define_mfa_system" title="Link to this definition"></a></dt>
+<dd><p>Load MFA system into the MISO2 model.</p>
+<p>Since the model core logic relies on access to the correct parameter names to
+model a system, the model logic is at the moment customized towards the most recent MFA
+system definition. In future versions, this should be replaced with a mapping of MFA systems to appropriate
+model logic and output functions.
+The MFA System initializer sets the control variables of the system (MFA_system_control) for
+later error checking and metadata creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mfa_system_initializer</strong> (<em>func</em>) – A MISO2_system_definitions function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.derive_cycled_mat_from_last_year">
+<span class="sig-name descname"><span class="pre">derive_cycled_mat_from_last_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_flows_stocks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.derive_cycled_mat_from_last_year" title="Link to this definition"></a></dt>
+<dd><p>Start year-loop with deriving recycled/downcycled material from last year from buffer S20</p>
+<p>S_20a = recycled material use (except for aggregates, these are listed in S_20c)
+S_20c = maximal supply of recycled virgin aggregates and downcycled aggregates from asphalt,             concrete, bricks (use determined from supply in p9)
+S_20 should be zero afterward.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Region index.</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – Time index.</p></li>
+<li><p><strong>buffer_flows_stocks</strong> (<em>dict</em>) – Dictionary mapping flows to stocks,</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.run_model">
+<span class="sig-name descname"><span class="pre">run_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimate_aggregates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_stock_cohorts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_last_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.run_model" title="Link to this definition"></a></dt>
+<dd><p>Run the MISO2 model.</p>
+<p>The parameters for the model run are taken from the models nr_start and nr_stop values.
+A start and stop region index can be specified, but the user needs to
+make sure that this index is covered by the MISO2Configs data and the MISO2SurvivalFunctions
+SF_Array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimate_aggregates</strong> (<em>bool</em>) – If True, foundation aggregates will be estimated. Defaults to True.</p></li>
+<li><p><strong>save_stock_cohorts</strong> (<em>bool</em>) – If True, stock cohorts will be added to output.                 They considerably increase the output size. Defaults to False.</p></li>
+<li><p><strong>save_last_year</strong> (<em>bool</em>) – If True, the last year of the model run will be included in                 the output. Values of the last year may contain nonsensical or NaN values and                     are usually not desired in the output, but may be useful for debugging.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Results of the model run.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>miso_output(<a class="reference internal" href="MISO2_output.html#model.output.MISO2_output.MISO2Output" title="model.output.MISO2_output.MISO2Output">MISO2Output</a>)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="MISO2_exceptions.html#util.MISO2_exceptions.WasteRateError" title="util.MISO2_exceptions.WasteRateError"><strong>WasteRateError</strong></a> – If waste ratios exceed 1.</p></li>
+<li><p><a class="reference internal" href="MISO2_exceptions.html#util.MISO2_exceptions.InputLimitError" title="util.MISO2_exceptions.InputLimitError"><strong>InputLimitError</strong></a> – If any data point violates parameter hard limits.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.core.MISO2_model.MISO2Model.write_debug_to_xls">
+<span class="sig-name descname"><span class="pre">write_debug_to_xls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_model.MISO2Model.write_debug_to_xls" title="Link to this definition"></a></dt>
+<dd><p>Writes the model debug dataframes as sheets to an XLS file at specified location. Use this after a finished
+model run to get diagnostic information on the model that is not usually saved to outputs, e.g. mass balances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filepath</strong> (<em>str</em>) – Path and name of debug file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="MISO2_system_definitions.html" class="btn btn-neutral float-left" title="MISO2 System definitions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MISO2_model_data.html" class="btn btn-neutral float-right" title="MISO2 Model data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre Baumgart, Dominik Wiedenhofer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MISO2 Multiprocessing &mdash; MISO2  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MISO2 Database" href="MISO2_database.html" />
+    <link rel="prev" title="MISO2 Model data" href="MISO2_model_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MISO2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/database.html">Database</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="API_reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#input">Input</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="API_reference.html#model-core">Model core</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="MISO2_model.html">MISO2 Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MISO2_model_data.html">MISO2 Model data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MISO2 Multiprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#model.core.MISO2_multiprocessing.miso_run_pool"><code class="docutils literal notranslate"><span class="pre">miso_run_pool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model.core.MISO2_multiprocessing.miso_run_pool_mc"><code class="docutils literal notranslate"><span class="pre">miso_run_pool_mc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model.core.MISO2_multiprocessing.miso_run_pool_mc_batch"><code class="docutils literal notranslate"><span class="pre">miso_run_pool_mc_batch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model.core.MISO2_multiprocessing.miso_run_pool_sensitivity"><code class="docutils literal notranslate"><span class="pre">miso_run_pool_sensitivity()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#output">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#utilities">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#odym">ODYM</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MISO2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="API_reference.html">API Reference</a></li>
+      <li class="breadcrumb-item active">MISO2 Multiprocessing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/socialecologyboku/MISO2/blob/master/docs/source/modules/MISO2_multiprocessing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-model.core.MISO2_multiprocessing">
+<span id="miso2-multiprocessing"></span><h1>MISO2 Multiprocessing<a class="headerlink" href="#module-model.core.MISO2_multiprocessing" title="Link to this heading"></a></h1>
+<p>Multiprocessing functions for running MISO2 models.</p>
+<p>Created on Mon Sep 26 10:45:08 2022</p>
+<p>&#64;author: bgrammer</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="model.core.MISO2_multiprocessing.miso_run_pool">
+<span class="sig-prename descclassname"><span class="pre">model.core.MISO2_multiprocessing.</span></span><span class="sig-name descname"><span class="pre">miso_run_pool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_model_arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_to_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logging_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_multiprocessing.miso_run_pool" title="Link to this definition"></a></dt>
+<dd><p>Function to be passed to a Multiprocessing.Pool for parallel processing of single regions.</p>
+<p>Config and survival functions are meant to be of a single region. If logging or saving outputs is enabled, a new
+folder named after the output region is created in the output path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>MISO2Config/str</em>) – Config for a single region. If a string is passed instead of             a MISO2Config object, it is interpreted as a path to a valid config.</p></li>
+<li><p><strong>run_model_arguments</strong> (<em>dict</em>) – Wraps “output_path”, “estimate_aggregates” options for model run.</p></li>
+<li><p><strong>save_to_file</strong> (<em>list</em>) – List of outputs to be saved. May include “sf” and “result”.</p></li>
+<li><p><strong>sf</strong> (<a class="reference internal" href="MISO2_survival_functions.html#model.config.MISO2_survival_functions.MISO2SurvivalFunctions" title="model.config.MISO2_survival_functions.MISO2SurvivalFunctions"><em>MISO2SurvivalFunctions</em></a>) – Survival functions for a single region.             If None is passed to this argument, the survival functions will be created.</p></li>
+<li><p><strong>logging_level</strong> (<em>logging.LEVEL</em>) – Level of console logging. None will disable logging altogether.             Defaults to Warning.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Result of the model run.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>miso_output(<a class="reference internal" href="MISO2_output.html#model.output.MISO2_output.MISO2Output" title="model.output.MISO2_output.MISO2Output">MISO2Output</a>)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If mismatch in MC configuration is detected.</p></li>
+<li><p><strong>TypeError</strong> – When wrong object types are passed to function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.core.MISO2_multiprocessing.miso_run_pool_mc">
+<span class="sig-prename descclassname"><span class="pre">model.core.MISO2_multiprocessing.</span></span><span class="sig-name descname"><span class="pre">miso_run_pool_mc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_model_arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_to_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repetitions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logging_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sf_randomization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_multiprocessing.miso_run_pool_mc" title="Link to this definition"></a></dt>
+<dd><p>Function to be passed to a Multiprocessing.Pool for Monte Carlo parallel processing of single regions.</p>
+<p>Config and survival functions are meant to be of a single region. The config needs to be set up for MC
+randomization, with uncertainty values present. The save_to_file list specifies which outputs are to be saved.
+A new folder named after the output region is created in the output path and will hold the base file log and the
+MISO2Stats object (as JSON/parquet files) that aggregates mean and variances over all MC runs.
+The logfiles of the individual MC runs and the outputs (if they are saved) are located in subfolders
+created automatically within that directory, with each holding up to 500 runs.</p>
+<p>Be aware that if you run this function with a high number of repetitions, and you are saving all outputs,
+it will have a considerable runtime and consume significant amounts of disk space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>MISO2Config/str</em>) – Config for a single region. If a string is passed             instead of a MISO2Config object, it is interpreted as a path to a valid config.</p></li>
+<li><p><strong>run_model_arguments</strong> (<em>dict</em>) – Wraps “estimate_aggregates”, “mc_batch_size”.</p></li>
+<li><p><strong>save_to_file</strong> (<em>list</em>) – List of outputs to be saved. May include “all_outputs”, “sf” and “result”.             Defaults to None.</p></li>
+<li><p><strong>sf</strong> (<a class="reference internal" href="MISO2_survival_functions.html#model.config.MISO2_survival_functions.MISO2SurvivalFunctions" title="model.config.MISO2_survival_functions.MISO2SurvivalFunctions"><em>MISO2SurvivalFunctions</em></a>) – Survival functions for a single region. If None is passed to this argument,             the survival functions will be created.</p></li>
+<li><p><strong>repetitions</strong> (<em>int</em>) – Number of Monte Carlo repetitions. Defaults to 1000, hardcapped limit of 15.000.</p></li>
+<li><p><strong>logging_level</strong> (<em>logging.LEVEL</em>) – Level of console logging. Defaults to Warning.</p></li>
+<li><p><strong>sf_randomization</strong> (<em>bool</em>) – Randomize survival functions per run. True by default.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Aggregated stats of all output runs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>miso_stats(<a class="reference internal" href="MISO2_stats.html#model.output.MISO2_stats.MISO2Stats" title="model.output.MISO2_stats.MISO2Stats">MISO2Stats</a>)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – When illegal number of repetitions are to be executed or mismatch in MC configuration</p></li>
+<li><p><strong>TypeError</strong> – When wrong object types are passed to function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.core.MISO2_multiprocessing.miso_run_pool_mc_batch">
+<span class="sig-prename descclassname"><span class="pre">model.core.MISO2_multiprocessing.</span></span><span class="sig-name descname"><span class="pre">miso_run_pool_mc_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_model_arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repetitions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logging_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_multiprocessing.miso_run_pool_mc_batch" title="Link to this definition"></a></dt>
+<dd><p>Simplified batch version that skips construction of MISO stats objects and only saves output files.</p>
+<p>Function to be passed to a Multiprocessing.Pool for Monte Carlo parallel processing of single regions.</p>
+<p>Config and survival functions are meant to be of a single region. The config needs to be set up for MC      randomization. The save_to_file list specifies which outputs are to be saved. A new folder named after the output       region is created in the output path and will hold the base file log and the MISO2Stats object        (as JSON/parquet files).
+The logfiles of the individual MC runs and the outputs (if they are saved) are located in subfolders         created automatically within that directory, with each holding up to 500 runs.</p>
+<p>Be aware that if you run this function with a high number of repetitions, it will have a considerable runtime and
+consume significant amounts of disk space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>MISO2Config/str</em>) – Config for a single region. If a string is passed             instead of a MISO2Config object, it is interpreted as a path to a valid config.</p></li>
+<li><p><strong>run_model_arguments</strong> (<em>dict</em>) – Wraps “estimate_aggregates”, “mc_batch_size”.</p></li>
+<li><p><strong>sf</strong> (<a class="reference internal" href="MISO2_survival_functions.html#model.config.MISO2_survival_functions.MISO2SurvivalFunctions" title="model.config.MISO2_survival_functions.MISO2SurvivalFunctions"><em>MISO2SurvivalFunctions</em></a>) – Survival functions for a single region. If None is passed to this argument,             the survival functions will be created.</p></li>
+<li><p><strong>repetitions</strong> (<em>int</em>) – Number of Monte Carlo repetitions. Defaults to 1000, hardcapped limit of 15.000.</p></li>
+<li><p><strong>logging_level</strong> (<em>logging.LEVEL</em>) – Level of console logging. Defaults to Warning.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Aggregated stats of all output runs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>miso_stats(<a class="reference internal" href="MISO2_stats.html#model.output.MISO2_stats.MISO2Stats" title="model.output.MISO2_stats.MISO2Stats">MISO2Stats</a>)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – When illegal number of repetitions are to be executed or mismatch in MC configuration</p></li>
+<li><p><strong>TypeError</strong> – When wrong object types are passed to function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model.core.MISO2_multiprocessing.miso_run_pool_sensitivity">
+<span class="sig-prename descclassname"><span class="pre">model.core.MISO2_multiprocessing.</span></span><span class="sig-name descname"><span class="pre">miso_run_pool_sensitivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_model_arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logging_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.core.MISO2_multiprocessing.miso_run_pool_sensitivity" title="Link to this definition"></a></dt>
+<dd><p>Executes sensitivity parameter testing for a given region configuration.</p>
+<p>This function performs sensitivity analysis by running the model with different parameter
+groups and scenarios. It logs the process and outputs the results for each combination
+of parameter group and scenario.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="MISO2_config.html#model.config.MISO2_config.MISO2Config" title="model.config.MISO2_config.MISO2Config"><em>MISO2Config</em></a>) – Configuration object for the region to be analyzed.</p></li>
+<li><p><strong>run_model_arguments</strong> (<em>dict</em>) – Arguments required to run the model, including the output path and
+survival function parametrization.</p></li>
+<li><p><strong>logging_level</strong> (<em>int</em><em>, </em><em>optional</em>) – Logging level for the file logger. Defaults to logger.WARNING.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A dictionary where keys are tuples of (parameter_group, scenario) and values are</dt><dd><p>the model outputs for those combinations.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Creates a timestamped log file in the output directory for the specified region.</p></li>
+<li><p>Iterates over parameter groups and scenarios to perform the sensitivity analysis.</p></li>
+<li><p>Uses a cache to store and reuse computed survival functions.</p></li>
+<li><p>For the “Multiplier” parameter group, temporarily modifies the multiplier values
+during the analysis and restores them afterward.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="MISO2_model_data.html" class="btn btn-neutral float-left" title="MISO2 Model data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MISO2_database.html" class="btn btn-neutral float-right" title="MISO2 Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre Baumgart, Dominik Wiedenhofer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

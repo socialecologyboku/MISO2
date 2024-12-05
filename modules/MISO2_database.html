@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MISO2 Database &mdash; MISO2  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MISO2 Output" href="MISO2_output.html" />
+    <link rel="prev" title="MISO2 Multiprocessing" href="MISO2_multiprocessing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MISO2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../background/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/usage.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/database.html">Database</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="API_reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#input">Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#model-core">Model core</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="API_reference.html#output">Output</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MISO2 Database</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#model.output.MISO2_database.MISO2Database"><code class="docutils literal notranslate"><span class="pre">MISO2Database</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="MISO2_output.html">MISO2 Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MISO2_stats.html">MISO2 Stats</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#utilities">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API_reference.html#odym">ODYM</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MISO2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="API_reference.html">API Reference</a></li>
+      <li class="breadcrumb-item active">MISO2 Database</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/socialecologyboku/MISO2/blob/master/docs/source/modules/MISO2_database.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-model.output.MISO2_database">
+<span id="miso2-database"></span><h1>MISO2 Database<a class="headerlink" href="#module-model.output.MISO2_database" title="Link to this heading"></a></h1>
+<p>Created on Tue Aug 23 10:20:55 2022</p>
+<p>&#64;author: bgrammer</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="model.output.MISO2_database.MISO2Database">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.output.MISO2_database.</span></span><span class="sig-name descname"><span class="pre">MISO2Database</span></span><a class="headerlink" href="#model.output.MISO2_database.MISO2Database" title="Link to this definition"></a></dt>
+<dd><p>Aggregate object for MISO2Outputs.</p>
+<p>Stores regional outputs into larger dataframes and provides convenience wrapper to subset the data.
+Only outputs with the same system definition and run options can be added to a database object.
+It is possible to add both MISO2Outputs and MISO2Stats, although the latter needs to be finalized.
+The output types that are aggregated are determined by the shape and index of the MISO2Output’s data,
+with series having only one column, enduse containing a sector index, and cohorts containing both a time
+and a sector index. All other dataframes are added as regular outputs.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.output.MISO2_database.MISO2Database._values">
+<span class="sig-name descname"><span class="pre">_values</span></span><a class="headerlink" href="#model.output.MISO2_database.MISO2Database._values" title="Link to this definition"></a></dt>
+<dd><p>Holds dataframes for four output types (“series”, “enduse”, “cohorts”, “outputs”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.output.MISO2_database.MISO2Database._metadata">
+<span class="sig-name descname"><span class="pre">_metadata</span></span><a class="headerlink" href="#model.output.MISO2_database.MISO2Database._metadata" title="Link to this definition"></a></dt>
+<dd><p>Metadata of database object. Contains references for MFA system definition             and run options as well as original outputs and stats metadata and saved file names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.output.MISO2_database.MISO2Database.add_miso_outputs">
+<span class="sig-name descname"><span class="pre">add_miso_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">miso_outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_cohorts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.output.MISO2_database.MISO2Database.add_miso_outputs" title="Link to this definition"></a></dt>
+<dd><p>Add MISO2Output files to database.</p>
+<p>If not yet set, control references for MFA system definition and run options
+are taken from the first output in the list. If enduse cohorts are present, they
+will be saved as parquet into an external folder to be lazily loaded as a Dask dataframe.
+Please note that is not written for efficiency, since it is expected to be a one-time operation. A large number
+of output files might lead to significant processing time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>miso_outputs</strong> (<em>list</em>) – List of MISO2Outputs.</p></li>
+<li><p><strong>save_cohorts</strong> (<em>bool</em>) – If True (default), cohorts, if any are present in the outputs,                 will be saved as parquets in the db folder.</p></li>
+<li><p><strong>db_folder</strong> (<em>str</em>) – Relative path folder name where parquets are saved. This will override                 any existing associated database folder of the object. Defaults “miso_database”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If trying to add non-MISO2Output or an empty input list.</p></li>
+<li><p><strong>ValueError</strong> – If output MFA system definition and run options do not match database control values.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.output.MISO2_database.MISO2Database.create_database_from_output_files">
+<span class="sig-name descname"><span class="pre">create_database_from_output_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'output'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.output.MISO2_database.MISO2Database.create_database_from_output_files" title="Link to this definition"></a></dt>
+<dd><p>Convenience wrapper to fill a MISO2 database from outputs on disk.</p>
+<p>The function will read in all .json metadata in the directory and all subdirectories</p>
+<p>Note that there are some validity checks in place to prevent adding outputs with different system definitions
+and run options, but these do not cover all possible scenarios of garbled input.
+Make sure that the specified directory only contains MISO2Outputs and MISO2Stats that you really want to add to
+the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directory</strong> (<em>str</em>) – Path to folder which is to be read in.</p></li>
+<li><p><strong>output_type</strong> (<em>str</em>) – One of “output” or “stats”</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.output.MISO2_database.MISO2Database.get_categories">
+<span class="sig-name descname"><span class="pre">get_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.output.MISO2_database.MISO2Database.get_categories" title="Link to this definition"></a></dt>
+<dd><p>Return unique index values of the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df_type</strong> (<em>string</em>) – Specific dataframe type to be returned. One of “series”,”enduse”,”cohorts”,”outputs”.
+If None (default), all categories are returned.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary of available categories.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>indices(dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.output.MISO2_database.MISO2Database.get_cohorts">
+<span class="sig-name descname"><span class="pre">get_cohorts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cohort_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.output.MISO2_database.MISO2Database.get_cohorts" title="Link to this definition"></a></dt>
+<dd><p>Returns a Dask dataframe of the enduse cohorts from parquet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cohort_paths</strong> (<em>str/list/glob</em>) – Path, list of path or glob from where to read in cohorts.
+If None (default), the database will try to read in cohorts from its associated filepaths.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dask DataFrame with cohorts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dask_cohorts(Dask.DataFrame)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.output.MISO2_database.MISO2Database.get_subset">
+<span class="sig-name descname"><span class="pre">get_subset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'outputs'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">slice(None,</span> <span class="pre">None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">slice(None,</span> <span class="pre">None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">slice(None,</span> <span class="pre">None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">slice(None,</span> <span class="pre">None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">slice(None,</span> <span class="pre">None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">slice(None,</span> <span class="pre">None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.output.MISO2_database.MISO2Database.get_subset" title="Link to this definition"></a></dt>
+<dd><p>Convenience method to subset the multi-index database and return a copy of the result.</p>
+<p>Single value arguments can be passed as strings, while multi-value arguments need to be passed as lists or
+tuples. All arguments default to slice(None), returning the entire index if not otherwise specified.
+Use the get_categories() method to see which index values are available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_type</strong> (<em>string</em>) – One of “series”, “enduses”, “cohorts” or “outputs” (the default).</p></li>
+<li><p><strong>result_type</strong> (<em>str/list</em>) – The type of result to be returned. One of e.g. “result”, “mean”, “s_var”.</p></li>
+<li><p><strong>region</strong> (<em>str/list</em>) – The region, e.g. “Austria” or “World”.</p></li>
+<li><p><strong>parameter</strong> (<em>str/list</em>) – The name of the output parameter.</p></li>
+<li><p><strong>material</strong> (<em>str/list</em>) – The name of the material.</p></li>
+<li><p><strong>sector</strong> (<em>str/list</em>) – The name of the sector.</p></li>
+<li><p><strong>years</strong> (<em>tuple</em>) – Start and end year to be returned. The upper bound is included.</p></li>
+<li><p><strong>drop_levels</strong> (<em>bool</em>) – Remove single-value levels of subset when querying.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A subset of a dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>df(Pandas.DataFrame/Pandas.Series)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.output.MISO2_database.MISO2Database.restore_from_parquet">
+<span class="sig-name descname"><span class="pre">restore_from_parquet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata_filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.output.MISO2_database.MISO2Database.restore_from_parquet" title="Link to this definition"></a></dt>
+<dd><p>Restore a MISO2Database object from saved files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder_path</strong> (<em>str</em>) – Location of files.</p></li>
+<li><p><strong>metadata_filename</strong> (<em>str</em>) – Name of metadata JSON file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – When metadata file does not exist at given location.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.output.MISO2_database.MISO2Database.save_to_file">
+<span class="sig-name descname"><span class="pre">save_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_cohorts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MISO2_data'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.output.MISO2_database.MISO2Database.save_to_file" title="Link to this definition"></a></dt>
+<dd><p>Wrapper method for saving database to file.</p>
+<p>Cohorts are already saved as parquets, so they will not be exported via save in that format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_type</strong> (<em>str</em>) – One of “xls”, “parquet” and “csv”</p></li>
+<li><p><strong>output_path</strong> (<em>str</em>) – Output folder</p></li>
+<li><p><strong>export_cohorts</strong> (<em>bool</em>) – Export cohorts. These files may be excessively large. Defaults to false.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Filename prefix of output files</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="MISO2_multiprocessing.html" class="btn btn-neutral float-left" title="MISO2 Multiprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MISO2_output.html" class="btn btn-neutral float-right" title="MISO2 Output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre Baumgart, Dominik Wiedenhofer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

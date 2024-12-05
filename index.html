@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to the documentation of the MISO2 model &mdash; MISO2  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="About" href="background/about.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            MISO2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="background/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/usage.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database/database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/API_reference.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">MISO2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to the documentation of the MISO2 model</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/socialecologyboku/MISO2/blob/master/docs/source/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-the-documentation-of-the-miso2-model">
+<h1>Welcome to the documentation of the MISO2 model<a class="headerlink" href="#welcome-to-the-documentation-of-the-miso2-model" title="Link to this heading"></a></h1>
+<p>The MISO2 model (Material Inputs, Stocks, and Outputs) is a dynamic, inflow-driven material stock-flow model,
+which covers 14 supply chain processes from raw material extraction and processing, stock-building and stock dynamics,
+to end-of-life flows and waste management. For detailed information and documentation, we refer to the peer-reviewed,
+open-access publication <a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/jiec.13575">(Wiedenhofer et al. 2024)</a>.</p>
+<p>With the MISO2 model, we also provide a global, country-level application which covers 23 raw
+materials and 20 stock-building materials across 177 countries from 1900 to 2016. The
+MAT_STOCKS database version 1.0 can be <a class="reference external" href="https://zenodo.org/records/12794253">found on Zenodo</a>.</p>
+<p><strong>Key Features</strong>:</p>
+<ul class="simple">
+<li><p>Economy-wide material stock-flow model and analysis</p></li>
+<li><p>Fully consistent with system boundaries and definitions established in economy-wide material flow accounting</p></li>
+<li><p>Comprehensive coverage of raw materials, stock-building materials, end-uses and stock dynamics, as well as end-of-life and waste flows</p></li>
+<li><p>Global, country-level application from 1900 to 2016, with a spin-up period from 1820 to 1900.</p></li>
+</ul>
+<p>The documentation provides an overview of the software, guides on setup and usage, as well as detailed API references. We give working examples of how to process this input data, run the model, and access the results. Input data for two countries, United States of America and United Kingdom, is provided to test the model.</p>
+<p>MISO2 wraps functionality from the <a class="reference external" href="https://github.com/IndEcol/ODYM">ODYM package</a> and contains a slightly modified version of the ODYM v1 release adapted to our needs.</p>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading"></a></h2>
+<p>The MISO2 software was developed by a collaborative team from BOKU University:</p>
+<ul class="simple">
+<li><p>Jan Streeck</p></li>
+<li><p>Benedikt Grammer</p></li>
+<li><p>Hanspeter Wieland</p></li>
+<li><p>Dominik Wiedenhofer</p></li>
+</ul>
+</section>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Link to this heading"></a></h2>
+<p>For domain-related questions and collaborations, contact:
+<a class="reference external" href="mailto:dominik&#46;wiedenhofer&#37;&#52;&#48;boku&#46;ac&#46;at">dominik<span>&#46;</span>wiedenhofer<span>&#64;</span>boku<span>&#46;</span>ac<span>&#46;</span>at</a></p>
+<p>For technical questions and bug reports, please open a GitHub issue or contact:
+<a class="reference external" href="mailto:benedikt&#46;grammer&#37;&#52;&#48;boku&#46;ac&#46;at">benedikt<span>&#46;</span>grammer<span>&#64;</span>boku<span>&#46;</span>ac<span>&#46;</span>at</a></p>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading"></a></h2>
+<p>This project is released under the GNU GPL-3.0 License.</p>
+</section>
+<section id="how-to-cite">
+<h2>How to cite<a class="headerlink" href="#how-to-cite" title="Link to this heading"></a></h2>
+<p>If you use MISO2 in your research, please cite the following article:</p>
+<p>Wiedenhofer, D., Streeck, J., Wieland, H., Grammer, B., Baumgart, A., Plank, B., Helbig, C., Pauliuk, S., Haberl, H.,
+&amp; Krausmann, F. (2024). From extraction to end-uses and waste management: Modeling economy-wide material cycles and stock
+dynamics around the world. Journal of Industrial Ecology, 1–17. [DOI: 10.1111/jiec.13575] <a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/jiec.13575">Link to paper</a></p>
+</section>
+<section id="acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading"></a></h2>
+<p>This work was supported by the European Research Council (ERC) under the European Union’s Horizon 2020 research and
+innovation programme (MAT_STOCKS, grant agreement No 741950), and the European Union’s Horizon Europe programme
+(CircEUlar, grant agreement No 101056810). Funded by the European Union. Views and opinions expressed are however those
+of the author(s) only and do not necessarily reflect those of the European Union or granting authorities.</p>
+<a class="reference internal image-reference" href="_images/EU_flag.jpg"><img alt="_images/EU_flag.jpg" src="_images/EU_flag.jpg" style="width: 25%;" />
+</a>
+<a class="reference internal image-reference" href="_images/BOKU_Hauptlogo_RGB.png"><img alt="_images/BOKU_Hauptlogo_RGB.png" src="_images/BOKU_Hauptlogo_RGB.png" style="width: 35%;" />
+</a>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="background/about.html" class="btn btn-neutral float-right" title="About" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Jan Streeck, Benedikt Grammer, Hanspeter Wieland, Barbara Plank, Andre Baumgart, Dominik Wiedenhofer.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
