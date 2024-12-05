@@ -1,6 +1,7 @@
 # Welcome to the MISO2 model
 
-The MISO2 model (Material Inputs, Stocks, and Outputs) is a dynamic, inflow-driven material stock-flow model, which covers 14 supply chain processes from raw material extraction and processing, stock-building and stock dynamics, to end-of-life flows and waste management. For detailed information and documentation, we refer to the peer-reviewed, open-access publication (Wiedenhofer et al. 2024).
+The MISO2 model (Material Inputs, Stocks, and Outputs) is a dynamic, inflow-driven material stock-flow model, which covers 14 supply chain processes from raw material extraction and processing, stock-building and stock dynamics, to end-of-life flows and waste management. For detailed information, we refer to the peer-reviewed, open-access publication (Wiedenhofer et al. 2024).
+and the [docs of this repository](https://socialecologyboku.github.io/MISO2/).
 
 With the MISO2 model, we also provide a global, country-level application which covers 23 raw materials and 20
 stock-building materials across 177 countries from 1900 to 2016. You can find the [MAT_STOCKS database version 1.0](https://zenodo.org/records/12794253) and 
